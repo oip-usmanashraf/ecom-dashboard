@@ -3,8 +3,8 @@ import { PaletteMode } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
 
 // ** Icons Imports
-import NightsStayOutlinedIcon from '@mui/icons-material/NightsStayOutlined';
-import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
+import WeatherNight from 'mdi-material-ui/WeatherNight'
+import WeatherSunny from 'mdi-material-ui/WeatherSunny'
 
 // ** Type Import
 import { Settings } from 'src/@core/context/settingsContext'
@@ -32,7 +32,7 @@ const ModeToggler = (props: Props) => {
 
   return (
     <IconButton color='inherit' aria-haspopup='true' onClick={handleModeToggle}>
-      {settings.mode === 'dark' ? <WbSunnyOutlinedIcon /> : <NightsStayOutlinedIcon />}
+      {settings.mode === 'dark' ? <WeatherSunny /> : <WeatherNight />}
     </IconButton>
   )
 }

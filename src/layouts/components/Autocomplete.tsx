@@ -21,17 +21,33 @@ import InputAdornment from '@mui/material/InputAdornment'
 import MuiAutocomplete, { AutocompleteRenderInputParams } from '@mui/material/Autocomplete'
 
 // ** Icons Imports
-import DataSaverOffOutlinedIcon from '@mui/icons-material/DataSaverOffOutlined';
-import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlined';
-import FolderDeleteOutlinedIcon from '@mui/icons-material/FolderDeleteOutlined';
-
+import Tab from 'mdi-material-ui/Tab'
+import Close from 'mdi-material-ui/Close'
+import Magnify from 'mdi-material-ui/Magnify'
+import Lastpass from 'mdi-material-ui/Lastpass'
+import ChartDonut from 'mdi-material-ui/ChartDonut'
+import CartOutline from 'mdi-material-ui/CartOutline'
+import CurrencyUsd from 'mdi-material-ui/CurrencyUsd'
+import AccountGroup from 'mdi-material-ui/AccountGroup'
+import CalendarBlank from 'mdi-material-ui/CalendarBlank'
+import CalendarRange from 'mdi-material-ui/CalendarRange'
+import AccountOutline from 'mdi-material-ui/AccountOutline'
+import ViewGridOutline from 'mdi-material-ui/ViewGridOutline'
+import GestureTapButton from 'mdi-material-ui/GestureTapButton'
+import AccountCogOutline from 'mdi-material-ui/AccountCogOutline'
+import FileRemoveOutline from 'mdi-material-ui/FileRemoveOutline'
+import FormatListCheckbox from 'mdi-material-ui/FormatListCheckbox'
+import FormatListNumbered from 'mdi-material-ui/FormatListNumbered'
+import ChartTimelineVariant from 'mdi-material-ui/ChartTimelineVariant'
+import SubdirectoryArrowLeft from 'mdi-material-ui/SubdirectoryArrowLeft'
+import FormatTextVariantOutline from 'mdi-material-ui/FormatTextVariantOutline'
+import CardBulletedSettingsOutline from 'mdi-material-ui/CardBulletedSettingsOutline'
 
 // ** Third Party Imports
 import axios from 'axios'
 
 // ** Types Imports
-// import { AppBarSearchType } from 'src/@fake-db/types'
+import { AppBarSearchType } from 'src/@fake-db/types'
 import { Settings } from 'src/@core/context/settingsContext'
 
 // ** Configs Imports
@@ -74,7 +90,7 @@ const defaultSuggestionsData: DefaultSuggestionsType[] = [
   //     {
   //       suggestion: 'CRM',
   //       link: '/dashboards/crm/',
-  //       icon: <DataSaverOffOutlinedIcon fontSize='small' sx={{ mr: 2.5, color: 'text.primary' }} />
+  //       icon: <ChartDonut fontSize='small' sx={{ mr: 2.5, color: 'text.primary' }} />
   //     },
   //     {
   //       suggestion: 'Analytics',
@@ -114,7 +130,7 @@ const defaultSuggestionsData: DefaultSuggestionsType[] = [
   //     {
   //       suggestion: 'Account Settings',
   //       link: '/pages/account-settings/',
-  //       icon: <ManageAccountsOutlinedIcon fontSize='small' sx={{ mr: 2.5, color: 'text.primary' }} />
+  //       icon: <AccountCogOutline fontSize='small' sx={{ mr: 2.5, color: 'text.primary' }} />
   //     }
   //   ]
   // },
@@ -260,7 +276,7 @@ const Dialog = styled(MuiDialog)({
 const NoResult = ({ value, setOpenDialog }: NoResultProps) => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center' }}>
-      <FolderDeleteOutlinedIcon sx={{ mb: 2.5, fontSize: '5rem', color: 'text.primary' }} />
+      <FileRemoveOutline sx={{ mb: 2.5, fontSize: '5rem', color: 'text.primary' }} />
       <Typography variant='h6' sx={{ mb: 11.5, wordWrap: 'break-word' }}>
         No results for{' '}
         <Typography variant='h6' component='span' sx={{ wordWrap: 'break-word' }}>
@@ -283,7 +299,7 @@ const NoResult = ({ value, setOpenDialog }: NoResultProps) => {
                 '&:hover > *': { color: 'primary.main' }
               }}
             >
-              <DataSaverOffOutlinedIcon fontSize='small' sx={{ mr: 2.5, color: 'text.primary' }} />
+              <ChartDonut fontSize='small' sx={{ mr: 2.5, color: 'text.primary' }} />
               <Typography variant='body2' sx={{ color: 'text.primary' }}>
                 CRM Dashboard
               </Typography>
@@ -301,7 +317,7 @@ const NoResult = ({ value, setOpenDialog }: NoResultProps) => {
                 '&:hover > *': { color: 'primary.main' }
               }}
             >
-              <PersonOutlineOutlinedIcon fontSize='small' sx={{ mr: 2.5, color: 'text.primary' }} />
+              <AccountOutline fontSize='small' sx={{ mr: 2.5, color: 'text.primary' }} />
               <Typography variant='body2' sx={{ color: 'text.primary' }}>
                 User View
               </Typography>
@@ -319,7 +335,7 @@ const NoResult = ({ value, setOpenDialog }: NoResultProps) => {
                 '&:hover > *': { color: 'primary.main' }
               }}
             >
-              <ManageAccountsOutlinedIcon fontSize='small' sx={{ mr: 2.5, color: 'text.primary' }} />
+              <AccountCogOutline fontSize='small' sx={{ mr: 2.5, color: 'text.primary' }} />
               <Typography variant='body2' sx={{ color: 'text.primary' }}>
                 Account Settings
               </Typography>
@@ -373,7 +389,7 @@ const AutocompleteComponent = ({ hidden, settings }: Props) => {
   const [isMounted, setIsMounted] = useState<boolean>(false)
   const [searchValue, setSearchValue] = useState<string>('')
   const [openDialog, setOpenDialog] = useState<boolean>(false)
-  // const [options, setOptions] = useState<AppBarSearchType[]>([])
+  const [options, setOptions] = useState<AppBarSearchType[]>([])
 
   // ** Hooks & Vars
   const theme = useTheme()
@@ -404,13 +420,13 @@ const AutocompleteComponent = ({ hidden, settings }: Props) => {
   }, [])
 
   // Handle click event on a list item in search result
-  // const handleOptionClick = (obj: AppBarSearchType) => {
-  //   setSearchValue('')
-  //   setOpenDialog(false)
-  //   if (obj.url) {
-  //     router.push(obj.url)
-  //   }
-  // }
+  const handleOptionClick = (obj: AppBarSearchType) => {
+    setSearchValue('')
+    setOpenDialog(false)
+    if (obj.url) {
+      router.push(obj.url)
+    }
+  }
 
   // Handle ESC & shortcut keys keydown events
   const handleKeydown = useCallback(
@@ -517,7 +533,7 @@ const AutocompleteComponent = ({ hidden, settings }: Props) => {
                         >
                           {!hidden ? <Typography sx={{ mr: 2.5, color: 'text.disabled' }}>[esc]</Typography> : null}
                           <IconButton size='small' sx={{ p: 1 }}>
-                            <CloseIcon fontSize='small' />
+                            <Close fontSize='small' />
                           </IconButton>
                         </InputAdornment>
                       )

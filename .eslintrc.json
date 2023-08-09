@@ -5,22 +5,21 @@
     "prettier"
   ],
   "rules": {
-    // 0 = off, 1 = warn, 2 = error
     "react/display-name": "off",
     "@next/next/no-img-element": "off",
     "react/no-unescaped-entities": "off",
     "import/no-anonymous-default-export": "off",
-    "@typescript-eslint/no-unused-vars": "off",
+    // "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-unused-vars": "0",
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
-    "@typescript-eslint/no-empty-interface": "off",
-    "react-hooks/exhaustive-deps": "off",
+    // "@typescript-eslint/no-explicit-any": "error",
     // add new line above comment
     "lines-around-comment": [
       "error",
       {
-        "beforeLineComment": false,
+        "beforeLineComment": true,
         "beforeBlockComment": true,
         "allowBlockStart": true,
         "allowClassStart": true,
@@ -29,14 +28,14 @@
       }
     ],
     // add new line above return
-    // "newline-before-return": "error",
+    "newline-before-return": "error",
     // add new line below import
-    // "import/newline-after-import": [
-    //   "error",
-    //   {
-    //     "count": 1
-    //   }
-    // ],
+    "import/newline-after-import": [
+      "error",
+      {
+        "count": 1
+      }
+    ],
     "@typescript-eslint/ban-types": [
       "error",
       {

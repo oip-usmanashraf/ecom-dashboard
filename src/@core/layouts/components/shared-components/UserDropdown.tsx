@@ -15,7 +15,13 @@ import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 
 // ** Icons Imports
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import CogOutline from 'mdi-material-ui/CogOutline'
+import CurrencyUsd from 'mdi-material-ui/CurrencyUsd'
+import EmailOutline from 'mdi-material-ui/EmailOutline'
+import LogoutVariant from 'mdi-material-ui/LogoutVariant'
+import AccountOutline from 'mdi-material-ui/AccountOutline'
+import MessageOutline from 'mdi-material-ui/MessageOutline'
+import HelpCircleOutline from 'mdi-material-ui/HelpCircleOutline'
 import { getInitials } from 'src/@core/utils/get-initials'
 import CustomAvatar from 'src/@core/components/mui/avatar'
 
@@ -24,7 +30,8 @@ import { useAuth } from 'src/hooks/useAuth'
 
 // ** Type Imports
 import { Settings } from 'src/@core/context/settingsContext'
-
+import MyChannelList from 'src/@core/components/apps/channels/components/MyChannelList'
+import { IUser } from 'src/types/apps/user'
 import Link from 'next/link'
 import { textOverflow } from 'src/@core/helper/text'
 
@@ -41,21 +48,14 @@ const BadgeContentSpan = styled('span')(({ theme }) => ({
   boxShadow: `0 0 0 2px ${theme.palette.background.paper}`
 }))
 
-export const renderClient = (row: any) => {
+export const renderClient = (row: IUser | any) => {
   if (row?.profile_picture) {
-    return (
-      <Avatar
-        alt='John Doe'
-        // @ts-ignore
-        src={row?.profile_picture}
-        sx={{ width: '2.5rem', height: '2.5rem' }}
-      />
-    )
+    return <Avatar alt='John Doe' src={row?.profile_picture} sx={{ width: '2.5rem', height: '2.5rem' }} />
   } else {
     return (
       <CustomAvatar
         skin='light'
-        color={row?.avatarColor || 'primary'}
+        color={row.avatarColor || 'primary'}
         sx={{ mr: 3, width: 34, height: 34, fontSize: '1rem' }}
       >
         {getInitials(row?.first_name + ' ' + row?.last_name)}
@@ -114,7 +114,6 @@ const UserDropdown = (props: Props) => {
           sx={{ width: 40, height: 40 }}
           src='/images/avatars/1.png'
         /> */}
-        {/* @ts-ignore */}
         {renderClient(user)}
       </Badge>
       <Menu
@@ -135,14 +134,7 @@ const UserDropdown = (props: Props) => {
                 horizontal: 'right'
               }}
             >
-              {/* @ts-ignore */}
               {renderClient(user)}
-              {/* <Avatar
-                alt='John Doe'
-                // @ts-ignore
-                src={user?.profile_picture}
-                sx={{ width: '2.5rem', height: '2.5rem' }}
-              /> */}
             </Badge>
             <Link href='/settings/profile'>
               <Box
@@ -150,7 +142,6 @@ const UserDropdown = (props: Props) => {
               >
                 <Typography sx={{ fontWeight: 600 }}>
                   {textOverflow(
-                    //@ts-ignore
                     user?.activeChannel ? user?.activeChannel?.channel?.name : user?.first_name + ' ' + user?.last_name,
                     15
                   )}
@@ -173,14 +164,14 @@ const UserDropdown = (props: Props) => {
             background: 'linear-gradient(140.58deg, #363636 -21.35%, #2D2D2D 101.65%)'
           }}
         >
-    
+          <MyChannelList />
         </Box>
         <Divider sx={{ mt: 0, mb: 1 }} />
 
         {/* <Divider sx={{ mt: 0, mb: 1 }} /> */}
         {/* <MenuItem sx={{ p: 0 }} onClick={() => handleDropdownClose('/apps/user/view/12')}>
           <Box sx={styles}>
-            <PersonOutlineOutlinedIcon sx={{ mr: 2 }} />
+            <AccountOutline sx={{ mr: 2 }} />
             Profile
           </Box>
         </MenuItem> */}
@@ -217,7 +208,7 @@ const UserDropdown = (props: Props) => {
         </MenuItem> */}
         <Divider />
         <MenuItem sx={{ py: 2 }} onClick={handleLogout}>
-          <ExitToAppIcon sx={{ mr: 2, fontSize: '1.375rem', color: 'text.secondary' }} />
+          <LogoutVariant sx={{ mr: 2, fontSize: '1.375rem', color: 'text.secondary' }} />
           Logout
         </MenuItem>
       </Menu>

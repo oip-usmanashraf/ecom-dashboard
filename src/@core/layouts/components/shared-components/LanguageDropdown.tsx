@@ -7,7 +7,7 @@ import MenuItem from '@mui/material/MenuItem'
 import IconButton from '@mui/material/IconButton'
 
 // ** Icons Imports
-import TranslateIcon from '@mui/icons-material/Translate';
+import Translate from 'mdi-material-ui/Translate'
 
 // ** Third Party Import
 import { useTranslation } from 'react-i18next'
@@ -57,7 +57,7 @@ const LanguageDropdown = ({ settings, saveSettings }: Props) => {
   return (
     <Fragment>
       <IconButton color='inherit' aria-haspopup='true' aria-controls='customized-menu' onClick={handleLangDropdownOpen}>
-        <TranslateIcon />
+        <Translate />
       </IconButton>
       <Menu
         anchorEl={anchorEl}

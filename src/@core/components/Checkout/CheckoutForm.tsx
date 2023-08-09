@@ -58,7 +58,8 @@ export default function CheckoutForm({ paymentIntent }: { paymentIntent: stripeJ
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: `http://54.145.247.199/api/v1/invoice/payment_intents/confirm/${paymentIntent.id}` // live
+        // return_url: `http://54.145.247.199/api/v1/invoice/payment_intents/confirm/${paymentIntent.id}` // live
+        return_url: `http://128.199.151.93/api/v1/invoice/payment_intents/confirm/${paymentIntent.id}` // new IP
         // return_url: `http://192.168.0.136:8002/api/v1/invoice/payment_intents/confirm/${paymentIntent.id}` // local
       }
     })

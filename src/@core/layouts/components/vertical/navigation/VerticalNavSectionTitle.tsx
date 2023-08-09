@@ -96,10 +96,10 @@ const VerticalNavSectionTitle = (props: Props) => {
             ...(navCollapsed && !navHover
               ? { width: 22 }
               : {
-                width: '100%',
-                '&:before': { top: 7, transform: 'none', width: theme.spacing(4) },
-                '& .MuiDivider-wrapper': { px: 4, fontSize: '0.75rem', letterSpacing: '0.21px' }
-              })
+                  width: '100%',
+                  '&:before': { top: 7, transform: 'none', width: theme.spacing(4) },
+                  '& .MuiDivider-wrapper': { px: 4, fontSize: '0.75rem', letterSpacing: '0.21px' }
+                })
           }}
         >
           {navCollapsed && !navHover ? null : (

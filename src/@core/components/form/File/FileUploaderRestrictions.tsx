@@ -18,14 +18,16 @@ import Typography, { TypographyProps } from '@mui/material/Typography'
 import { useController, UseControllerProps } from 'react-hook-form'
 
 // ** Icons Imports
-import CloseIcon from '@mui/icons-material/Close';
-import TextSnippetOutlinedIcon from '@mui/icons-material/TextSnippetOutlined';
+import Close from 'mdi-material-ui/Close'
+import FileDocumentOutline from 'mdi-material-ui/FileDocumentOutline'
+
 // ** Third Party Components
 import toast from 'react-hot-toast'
 import { useDropzone, DropzoneOptions } from 'react-dropzone'
 
 // ** Styled Component
 import DropzoneWrapper from 'src/@core/styles/libs/react-dropzone'
+import { usePlaylist } from 'src/@core/hooks/apps/usePlaylist'
 
 interface FileProp {
   name: string
@@ -56,9 +58,8 @@ const HeadingTypography = styled(Typography)<TypographyProps>(({ theme }) => ({
 
 // ** types
 interface IFileUploader extends DropzoneOptions, UseControllerProps {
-  name: string,
-  control: UseControllerProps['control'] | any,
-  label?: string
+  name: string
+  control: UseControllerProps['control'] | any
 }
 
 const FileUploaderRestrictions = ({
@@ -76,26 +77,22 @@ const FileUploaderRestrictions = ({
   } = useController({
     ...props,
     control
-  });
+  })
 
   // ** State
   const [files, setFiles] = useState<File[]>([])
   const [status, setStatus] = useState<'idle' | 'pending' | 'succes' | 'error'>('idle')
 
-  const [fileurl, setFileurl] = useState('')
-
   useEffect(() => {
-
     return () => {
       setFiles([])
     }
   }, [])
 
-
   // ** Hooks
   const { getRootProps, getInputProps } = useDropzone({
     maxFiles,
-    // maxSize,
+    maxSize,
     accept,
     onDrop: (acceptedFiles: File[]) => {
       setFiles(acceptedFiles.map((file: File) => Object.assign(file)))
@@ -107,19 +104,22 @@ const FileUploaderRestrictions = ({
     }
   })
 
+  const { store } = usePlaylist(null)
+
+  const handleRemoveAllFiles = () => {
+    setFiles([])
+  }
+
+  useEffect(() => {
+    setFiles([])
+    handleRemoveAllFiles()
+  }, [store.status === 'pending'])
+
   const renderFilePreview = (file: FileProp) => {
     if (file.type.startsWith('image')) {
       return <img width={38} height={38} alt={file.name} src={URL.createObjectURL(file as any)} />
-    }
-    else {
-      return <TextSnippetOutlinedIcon />
-    }
-  }
-
-  const renderFilePreviewWithUrl = (value: string) => {
-    // console.log('value DropzoneWrapper ', value)
-    if (value) {
-      return <img width={38} height={38} alt='file' src={value} />
+    } else {
+      return <FileDocumentOutline />
     }
   }
 
@@ -143,18 +143,14 @@ const FileUploaderRestrictions = ({
         </div>
       </div>
       <IconButton onClick={() => handleRemoveFile(file)}>
-        <CloseIcon fontSize='small' />
+        <Close fontSize='small' />
       </IconButton>
     </ListItem>
   ))
 
-  const handleRemoveAllFiles = () => {
-    setFiles([])
-  }
-
   // useEffect(
   //   () => () => {
-  //     // Make sure to revoke the data uris to avoid memory leaks
+  //     Make sure to revoke the data uris to avoid memory leaks
   //     files.forEach((file) => URL.revokeObjectURL(file.preview));
   //   },
   //   [files]
@@ -162,8 +158,8 @@ const FileUploaderRestrictions = ({
 
   const handleUpload = () => {
     setStatus('pending')
-    const uploadURL = 'https://api.cloudinary.com/v1_1/https-www-kharreedlo-com/auto/upload'
-    const uploadPreset = 'mfcn3oqs'
+    const uploadURL: string = 'https://api.cloudinary.com/v1_1/https-www-kharreedlo-com/auto/upload'
+    const uploadPreset: string = 'mfcn3oqs'
 
     if (files) {
       files.forEach(file => {
@@ -192,24 +188,8 @@ const FileUploaderRestrictions = ({
     }
   }
 
-
-  useEffect(() => {
-    console.log('value ',value);
-    
-    if (value) {
-      setFileurl(value)
-    }
-  }, [value])
-
   return (
     <DropzoneWrapper>
-      {
-        //@ts-ignore
-        props.label ?
-          //@ts-ignore
-          <p style={{marginLeft:5}}> {props.label} </p>
-          : ''
-      }
       <div {...getRootProps({ className: 'dropzone' })}>
         <input {...getInputProps()} />
         <Box sx={{ display: 'flex', flexDirection: ['column', 'column', 'row'], alignItems: 'center' }}>
@@ -217,43 +197,27 @@ const FileUploaderRestrictions = ({
           <Box sx={{ display: 'flex', flexDirection: 'column', textAlign: ['center', 'center', 'inherit'] }}>
             <HeadingTypography variant='h5'>Drop files here or click to upload.</HeadingTypography>
             <Typography color='textSecondary'>
-              Allowed {accept[Object.keys(accept)[0]].map((acc) => "*" + acc + ", ")}
+              Allowed {accept[Object.keys(accept)[0]].map(acc => '*' + acc + ', ')}
             </Typography>
-            <Typography color='textSecondary'>Max {maxFiles} files and max size of {maxSize} MB</Typography>
+            <Typography color='textSecondary'>
+              Max {maxFiles} files and max size of {maxSize} MB
+            </Typography>
           </Box>
         </Box>
       </div>
-      {
-        fileurl ?
-          <List>
-            <ListItem>
-              <div className='file-details'>
-                <div className='file-preview'>{renderFilePreviewWithUrl(fileurl)}</div>
-                <div>
-                  <Typography className='file-name'>File</Typography>
-                </div>
-              </div>
-              <IconButton onClick={() => setFileurl('')}>
-                <CloseIcon fontSize='small' />
-              </IconButton>
-            </ListItem>
-          </List>
-          : ''
-
-      }
       {files.length ? (
         <Fragment>
           <List>{fileList}</List>
           <div className='buttons'>
             <Button color='error' variant='outlined' onClick={handleRemoveAllFiles}>
-              Remove All
+              Remove
             </Button>
             <LoadingButton
               loading={status === 'pending'}
               disabled={status === 'pending'}
-              loadingPosition="end"
+              loadingPosition='end'
               size='large'
-              variant="contained"
+              variant='contained'
               type='button'
               onClick={handleUpload}
             >

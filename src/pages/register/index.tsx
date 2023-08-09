@@ -23,12 +23,12 @@ import Typography, { TypographyProps } from '@mui/material/Typography'
 import MuiFormControlLabel, { FormControlLabelProps } from '@mui/material/FormControlLabel'
 
 // ** Icons Imports
-import GoogleIcon from '@mui/icons-material/Google';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
-import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+import Google from 'mdi-material-ui/Google'
+import Github from 'mdi-material-ui/Github'
+import Twitter from 'mdi-material-ui/Twitter'
+import Facebook from 'mdi-material-ui/Facebook'
+import EyeOutline from 'mdi-material-ui/EyeOutline'
+import EyeOffOutline from 'mdi-material-ui/EyeOffOutline'
 
 // ** Third Party Imports
 import * as yup from 'yup'
@@ -39,7 +39,7 @@ import { useForm, Controller } from 'react-hook-form'
 import themeConfig from 'src/configs/themeConfig'
 
 // ** Layout Import
-import BlankLayout from 'src/@core/layouts/GuestLayout'
+import BlankLayout from 'src/@core/layouts/BlankLayout'
 
 const defaultValues = {
   email: '',
@@ -332,7 +332,7 @@ const Register = () => {
                             onMouseDown={e => e.preventDefault()}
                             onClick={() => setShowPassword(!showPassword)}
                           >
-                            {showPassword ? <VisibilityOutlinedIcon /> : <VisibilityOffOutlinedIcon />}
+                            {showPassword ? <EyeOutline /> : <EyeOffOutline />}
                           </IconButton>
                         </InputAdornment>
                       }
@@ -409,24 +409,24 @@ const Register = () => {
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Link href='/' passHref>
                   <IconButton component='a' onClick={(e: MouseEvent<HTMLElement>) => e.preventDefault()}>
-                    <FacebookIcon sx={{ color: '#497ce2' }} />
+                    <Facebook sx={{ color: '#497ce2' }} />
                   </IconButton>
                 </Link>
                 <Link href='/' passHref>
                   <IconButton component='a' onClick={(e: MouseEvent<HTMLElement>) => e.preventDefault()}>
-                    <TwitterIcon sx={{ color: '#1da1f2' }} />
+                    <Twitter sx={{ color: '#1da1f2' }} />
                   </IconButton>
                 </Link>
                 <Link href='/' passHref>
                   <IconButton component='a' onClick={(e: MouseEvent<HTMLElement>) => e.preventDefault()}>
-                    <GitHubIcon
+                    <Github
                       sx={{ color: theme => (theme.palette.mode === 'light' ? '#272727' : theme.palette.grey[300]) }}
                     />
                   </IconButton>
                 </Link>
                 <Link href='/' passHref>
                   <IconButton component='a' onClick={(e: MouseEvent<HTMLElement>) => e.preventDefault()}>
-                    <GoogleIcon sx={{ color: '#db4437' }} />
+                    <Google sx={{ color: '#db4437' }} />
                   </IconButton>
                 </Link>
               </Box>

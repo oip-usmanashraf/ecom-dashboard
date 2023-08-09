@@ -1,44 +1,53 @@
 // ** Toolkit imports
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, Dispatch } from '@reduxjs/toolkit'
 
 // ** Reducers
-import category from 'src/store/apps/category'
+import user from 'src/store/apps/user'
+import video from 'src/store/apps/video'
+import channels from 'src/store/apps/channels'
+import teacher from 'src/store/apps/teacher'
+import students from 'src/store/apps/students'
+import courses from 'src/store/apps/courses'
+import file from 'src/store/apps/file'
+import playlist from 'src/store/apps/playlist'
+import subscription from 'src/store/apps/subscription'
+import review from 'src/store/apps/review'
+import payment from 'src/store/apps/payment'
+import workspace from 'src/store/apps/workspace'
+import chat from 'src/store/apps/chat'
+import calendar from 'src/store/apps/calendar'
+import communityFeed from 'src/store/apps/community-feed'
 
-import { setupListeners } from '@reduxjs/toolkit/query'
-import { pokemonApi } from 'src/store/apps/category/rtk'
+// import project from './apps/project'
 
 export const store = configureStore({
   reducer: {
-    // report,
-    // assignment,
-    // project,
-    category,
-    // Add the generated reducer as a specific top-level slice
-    [pokemonApi.reducerPath]: pokemonApi.reducer,
+    file,
+    user,
+    video,
+    channels,
+    teacher,
+    students,
+    courses,
+    playlist,
+    subscription,
+    review,
+    payment,
+    workspace,
+    chat,
+    calendar,
+    communityFeed
   },
-  // Adding the api middleware enables caching, invalidation, polling,
-  // and other useful features of `rtk-query`.
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: false
-    }).concat(pokemonApi.middleware)
+    })
 })
-
-// optional, but required for refetchOnFocus/refetchOnReconnect behaviors
-// see `setupListeners` docs - takes an optional callback as the 2nd arg for customization
-setupListeners(store.dispatch)
 
 export type AppDispatch = typeof store.dispatch
 export type RootState = ReturnType<typeof store.getState>
 
-// export interface Redux {
-  // getState: typeof store.getState
-  // dispatch: Dispatch<any>
-// }
-
-// export const createAppAsyncThunk = createAsyncThunk.withTypes<{
-//   state: RootState
-//   dispatch: Dispatch<any>
-//   rejectValue: string
-//   extra: { s: string; n: number }
-// }>()
+export interface Redux {
+  getState: any // ReturnType<typeof store.getState>
+  dispatch: Dispatch<any>
+}

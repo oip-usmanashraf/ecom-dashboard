@@ -44,17 +44,14 @@ export default function Select({ onSelect }: IField) {
     //     // options={store.assignments}
     //     autoHighlight
     //     getOptionLabel={(option) =>
-    //         // @ts-ignore
     //         typeof option === 'string' ? option : option?.name || 'Not possible'
     //     }
     //     isOptionEqualToValue={() => true}
     //     value={selected}
-    //     // @ts-ignore
     //     onChange={(event: any, newValue: IAssignment) => {
     //         newValue && setSelected(newValue)
     //         newValue && onSelect(newValue)
     //     }}
-    //     // @ts-ignore
     //     renderOption={(props, option: IAssignment) => (
     //         <Box component="li" key={option && option.id} sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
     //             {option && option.name}

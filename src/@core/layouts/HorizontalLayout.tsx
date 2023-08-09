@@ -6,8 +6,7 @@ import { styled } from '@mui/material/styles'
 import MuiToolbar, { ToolbarProps } from '@mui/material/Toolbar'
 
 // ** Icons Imports
-import NorthOutlinedIcon from '@mui/icons-material/NorthOutlined';
-
+import ArrowUp from 'mdi-material-ui/ArrowUp'
 
 // ** Theme Config Import
 import themeConfig from 'src/configs/themeConfig'
@@ -166,7 +165,7 @@ const HorizontalLayout = (props: LayoutProps) => {
       ) : (
         <ScrollToTop className='mui-fixed'>
           <Fab color='primary' size='small' aria-label='scroll back to top'>
-            <NorthOutlinedIcon />
+            <ArrowUp />
           </Fab>
         </ScrollToTop>
       )}

@@ -39,9 +39,9 @@ export default function CountrySelect({ control, ...props }: IField) {
 
   const loadJson = (): Promise<any> => {
     return new Promise((res, rej) => {
-      // import(`src/@fake-db/countries/countries.json`).then((data) => {
-      //   res(data?.default);
-      // });
+      import(`src/@fake-db/countries/countries.json`).then((data) => {
+        res(data?.default);
+      });
     });
   };
 

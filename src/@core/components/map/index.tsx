@@ -9,7 +9,7 @@ import Geocode from "react-geocode";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import PushPinIcon from '@mui/icons-material/PushPin';
+import LocationOnIcon from 'mdi-material-ui/Pin';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
@@ -61,10 +61,10 @@ export default function GoogleMaps({ onSelectLocation }: any) {
     const [latLng, setLatLng] = React.useState<{ lat: number; lng: number; }>({ lat: 43.45, lng: -80.49 })
     const loaded = React.useRef(false);
 
-    React.useEffect(() => {
-        return () => {
-            setLatLng({ lat: 43.45, lng: -80.49 })
-        }
+    React.useEffect(() => {    
+      return () => {
+        setLatLng({ lat: 43.45, lng: -80.49 })
+      }
     }, [])
 
     if (typeof window !== 'undefined' && !loaded.current) {
@@ -182,7 +182,7 @@ export default function GoogleMaps({ onSelectLocation }: any) {
                             <Grid container alignItems="center">
                                 <Grid item>
                                     <Box
-                                        component={PushPinIcon}
+                                        component={LocationOnIcon}
                                         sx={{ color: 'text.secondary', mr: 2 }}
                                     />
                                 </Grid>

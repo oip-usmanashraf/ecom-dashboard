@@ -14,7 +14,9 @@ const Card = (theme: Theme, skin: Skin) => {
           '& .card-more-options': {
             marginTop: theme.spacing(-1),
             marginRight: theme.spacing(-3)
-          }
+          },
+          background:
+            'linear-gradient(135.45deg, #363636 11.55%, #000000 101.52%), linear-gradient(136.64deg, rgba(255, 255, 255, 0.35) -0.95%, rgba(255, 255, 255, 0.32) 135.8%);'
         }
       }
     },

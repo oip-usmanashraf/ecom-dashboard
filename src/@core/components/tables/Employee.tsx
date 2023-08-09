@@ -15,7 +15,7 @@ import CustomAvatar from 'src/@core/components/mui/avatar'
 
 // ** Types Imports
 import { ThemeColor } from 'src/@core/layouts/types'
-// import { DataGridRowType } from 'src/@fake-db/types'
+import { DataGridRowType } from 'src/@fake-db/types'
 
 // ** Utils Import
 import { getInitials } from 'src/@core/utils/get-initials'
@@ -167,7 +167,7 @@ const TableEmployee = ({ data = [] }: ITableEmployee) => {
   // const [data] = useState<DataGridRowType[]>(rows)
   const [pageSize, setPageSize] = useState<number>(7)
   const [searchText, setSearchText] = useState<string>('')
-  // const [filteredData, setFilteredData] = useState<DataGridRowType[]>([])
+  const [filteredData, setFilteredData] = useState<DataGridRowType[]>([])
 
   const handleSearch = (searchValue: string) => {
     setSearchText(searchValue)
@@ -182,16 +182,15 @@ const TableEmployee = ({ data = [] }: ITableEmployee) => {
         pageSize={pageSize}
         rowsPerPageOptions={[7, 10, 25, 50]}
         // components={{ Toolbar: QuickSearchToolbar }}
-        // rows={filteredData.length ? filteredData : data}
-        rows={[]}
+        rows={filteredData.length ? filteredData : data}
         onPageSizeChange={newPageSize => setPageSize(newPageSize)}
-      // componentsProps={{
-      //   toolbar: {
-      //     value: searchText,
-      //     clearSearch: () => handleSearch(''),
-      //     onChange: (event: ChangeEvent<HTMLInputElement>) => handleSearch(event.target.value)
-      //   }
-      // }}
+        // componentsProps={{
+        //   toolbar: {
+        //     value: searchText,
+        //     clearSearch: () => handleSearch(''),
+        //     onChange: (event: ChangeEvent<HTMLInputElement>) => handleSearch(event.target.value)
+        //   }
+        // }}
       />
     </Card>
   )

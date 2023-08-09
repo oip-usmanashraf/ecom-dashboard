@@ -9,7 +9,7 @@
 import { PaletteMode, Direction } from '@mui/material'
 
 // ** Icon Import
-import CircleIcon from '@mui/icons-material/Circle';
+import Circle from 'mdi-material-ui/Circle'
 
 // ** Types
 import { Skin, AppBar, Footer, ContentWidth, VerticalNavToggle, HorizontalMenuToggle } from 'src/@core/layouts/types'
@@ -24,9 +24,6 @@ type ThemeConfig = {
   navSubItemIcon: any
   direction: Direction
   templateName: string
-  title: string
-  metaDescription: string
-  metaKeywords: string
   navCollapsed: boolean
   routingLoader: boolean
   disableRipple: boolean
@@ -47,12 +44,9 @@ type ThemeConfig = {
 
 const themeConfig: ThemeConfig = {
   // ** Layout Configs
-  templateName: 'Next Js Architecture' /* App Name */,
-  title: 'Next Js', /* App title */
-  metaDescription: 'Next Js Architecture software', /* App meta description */
-  metaKeywords: 'Next Js Architecture software', /* App meta keywords */
+  templateName: 'Smart Chain Academy' /* App Name */,
   layout: 'vertical' /* vertical | horizontal */,
-  mode: 'light' /* light | dark */,
+  mode: 'dark' /* light | dark */,
   direction: 'ltr' /* ltr | rtl */,
   skin: 'default' /* default | bordered | semi-dark /*! Note: semi-dark value will only work for Vertical Layout */,
   contentWidth: 'boxed' /* full | boxed */,
@@ -64,7 +58,7 @@ const themeConfig: ThemeConfig = {
   // ** Navigation (Menu) Configs
   navHidden: false /* true | false */,
   menuTextTruncate: true /* true | false */,
-  navSubItemIcon: CircleIcon /* Icon Element */,
+  navSubItemIcon: Circle /* Icon Element */,
   verticalNavToggleType: 'accordion' /* accordion | collapse /*! Note: This is for Vertical navigation menu only */,
   navCollapsed: false /* true | false /*! Note: This is for Vertical navigation menu only */,
   navigationSize: 260 /* Number in PX(Pixels) /*! Note: This is for Vertical navigation menu only */,

@@ -18,8 +18,7 @@ const TextMaskCustom = React.forwardRef<HTMLElement, CustomProps>(function TextM
         // @ts-ignore
         '#': /[0-9]/
       }}
-      // @ts-ignore
-      inputRef={ref}
+      inputRef={ref as any}
       onAccept={(value: any) => onChange({ target: { name: props.name, value } })}
       overwrite
     />

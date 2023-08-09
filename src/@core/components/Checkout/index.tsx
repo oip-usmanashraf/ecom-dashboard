@@ -29,9 +29,10 @@ const stripePromise = loadStripe(
 // pk_test_51MFR2TIadObZ2b5rMClrfGQqKXqrJD3ZwO7Oy3THjAVxmsNifhkcNVLkCVOZyn5hVyonASBfle6A4MDgDkJCqF0Q00TsDGn1Rg
 // sk_test_51MFR2TIadObZ2b5rh7mfKwSaAbNLgR0QxgTSIWNUlzBD0M6RQYDg4YVI7RzLzZOg2pbkrqSZlJyIWP2Ye8JDWG35004dE9L9oI
 interface Props {
-  subscription: ISubscription
+  subscription: ISubscription | {} | any
+  id?: string
 }
-const Checkout: React.FC<Props> = ({ subscription }) => {
+const Checkout: React.FC<Props> = ({ subscription }: Props) => {
   const [paymentIntent, setPaymentIntent] = useState<stripeJs.PaymentIntent | null>(null)
 
   const appearance: Appearance = {
@@ -54,7 +55,7 @@ const Checkout: React.FC<Props> = ({ subscription }) => {
 
   useEffect(() => {
     createPaymentIntentHandler({
-      subscriptionId: subscription.id
+      subscriptionId: subscription?.id
     })
 
     return () => {

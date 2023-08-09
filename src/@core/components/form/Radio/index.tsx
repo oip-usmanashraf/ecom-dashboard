@@ -17,7 +17,7 @@ import { useController, UseControllerProps } from 'react-hook-form'
 interface IField extends UseControllerProps {
   name: string
   label: string
-  control: any
+  control: UseControllerProps['control']
   options: { value: FormControlLabelProps['value']; label: FormControlLabelProps['label'] }[]
 }
 
@@ -37,8 +37,8 @@ export default function ControlledRadioButtonsGroup({ control, options, ...props
     <FormControl fullWidth>
       <FormLabel id={labelId}>{props.label || 'Not Possiblle'}</FormLabel>
       <RadioGroup row aria-labelledby={labelId} name={name} value={value} onChange={onChange}>
-        {options?.map((option, index) => (
-          <FormControlLabel key={index} value={option.value} control={<Radio />} label={option.label} />
+        {options?.map(option => (
+          <FormControlLabel key={useId()} value={option.value} control={<Radio />} label={option.label} />
         ))}
       </RadioGroup>
       {error && (

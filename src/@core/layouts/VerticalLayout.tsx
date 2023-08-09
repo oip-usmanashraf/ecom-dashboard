@@ -7,8 +7,7 @@ import { styled } from '@mui/material/styles'
 import Box, { BoxProps } from '@mui/material/Box'
 
 // ** Icons Imports
-import NorthOutlinedIcon from '@mui/icons-material/NorthOutlined';
-
+import ArrowUp from 'mdi-material-ui/ArrowUp'
 
 // ** Theme Config Import
 import themeConfig from 'src/configs/themeConfig'
@@ -73,8 +72,8 @@ const VerticalLayout = (props: LayoutProps) => {
       <VerticalLayoutWrapper className='layout-wrapper'>
         {/* Navigation Menu */}
         {navHidden &&
-          themeConfig.layout === 'vertical' &&
-          !(navHidden && settings.lastLayout === 'horizontal') ? null : (
+        themeConfig.layout === 'vertical' &&
+        !(navHidden && settings.lastLayout === 'horizontal') ? null : (
           <Navigation
             navWidth={navWidth}
             navHover={navHover}
@@ -124,7 +123,7 @@ const VerticalLayout = (props: LayoutProps) => {
       ) : (
         <ScrollToTop className='mui-fixed'>
           <Fab color='primary' size='small' aria-label='scroll back to top'>
-            <NorthOutlinedIcon />
+            <ArrowUp />
           </Fab>
         </ScrollToTop>
       )}

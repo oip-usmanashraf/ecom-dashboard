@@ -11,8 +11,7 @@ import { styled, useTheme } from '@mui/material/styles'
 import Typography, { TypographyProps } from '@mui/material/Typography'
 
 // ** Icons
-import CloseIcon from '@mui/icons-material/Close';
-
+import Close from 'mdi-material-ui/Close'
 
 // ** Type Import
 import { Settings } from 'src/@core/context/settingsContext'
@@ -533,7 +532,7 @@ const VerticalNavHeader = (props: Props) => {
                 </defs>
               </svg> */}
               <div style={{ width: 200, height: 'auto' }}>
-                <Image src={'/images/apple-touch-icon.png'} width={200} height={60} alt="logo" />
+                <Image src={'/images/smart-chain-logo.png'} width={200} height={60} />
               </div>
               {/* <HeaderTitle variant='h6' sx={{ ...menuCollapsedStyles, ...(navCollapsed && !navHover ? {} : { ml: 2 }) }}>
               {themeConfig.templateName}
@@ -550,7 +549,7 @@ const VerticalNavHeader = (props: Props) => {
           onClick={toggleNavVisibility}
           sx={{ p: 0, backgroundColor: 'transparent !important' }}
         >
-          <CloseIcon fontSize='small' />
+          <Close fontSize='small' />
         </IconButton>
       ) : (
         <IconButton

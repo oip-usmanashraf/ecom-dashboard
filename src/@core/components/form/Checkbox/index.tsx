@@ -8,7 +8,6 @@ import { UseControllerProps } from 'react-hook-form'
 interface ICheckBox extends UseControllerProps, BaseTextFieldProps {
   name: string
   control: UseControllerProps['control'] | any
-  defaultValue?: string | number | readonly string[]
 }
 
 const FormCheckbox = ({ control, name }: ICheckBox) => {

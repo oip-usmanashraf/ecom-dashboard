@@ -1,5 +1,5 @@
 // ** React Imports
-import { useState, SyntheticEvent, Fragment, ReactNode } from 'react'
+import { useState, SyntheticEvent, Fragment, ReactNode, useContext } from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
@@ -12,7 +12,7 @@ import MuiMenuItem, { MenuItemProps } from '@mui/material/MenuItem'
 import Typography, { TypographyProps } from '@mui/material/Typography'
 
 // ** Icons Imports
-import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
+import BellOutline from 'mdi-material-ui/BellOutline'
 
 // ** Third Party Components
 import PerfectScrollbarComponent from 'react-perfect-scrollbar'
@@ -24,6 +24,7 @@ import CustomAvatar from 'src/@core/components/mui/avatar'
 // ** Type Imports
 import { Settings } from 'src/@core/context/settingsContext'
 import { CustomAvatarProps } from 'src/@core/components/mui/avatar/types'
+import { PusherContext } from 'src/context/PusherContext'
 
 interface Props {
   settings: Settings
@@ -102,6 +103,11 @@ const NotificationDropdown = (props: Props) => {
   // ** Vars
   const { direction } = settings
 
+  // ** Context
+
+  const { message } = useContext(PusherContext)
+  // console.log(message)
+
   const handleDropdownOpen = (event: SyntheticEvent) => {
     setAnchorEl(event.currentTarget)
   }
@@ -123,7 +129,7 @@ const NotificationDropdown = (props: Props) => {
   return (
     <Fragment>
       <IconButton color='inherit' aria-haspopup='true' onClick={handleDropdownOpen} aria-controls='customized-menu'>
-        <NotificationsOutlinedIcon />
+        <BellOutline />
       </IconButton>
       <Menu
         anchorEl={anchorEl}

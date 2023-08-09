@@ -4,8 +4,8 @@ import MuiBox, { BoxProps } from '@mui/material/Box'
 import { StepIconProps } from '@mui/material/StepIcon'
 
 // ** Icons Imports
-import WarningOutlinedIcon from '@mui/icons-material/WarningOutlined';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import Alert from 'mdi-material-ui/Alert'
+import CheckCircle from 'mdi-material-ui/CheckCircle'
 
 // ** Util Imports
 import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
@@ -25,9 +25,9 @@ const StepperCustomDot = (props: StepIconProps) => {
   const { active, completed, error } = props
 
   if (error) {
-    return <WarningOutlinedIcon sx={{ width: 20, height: 20, color: 'error.main', transform: 'scale(1.2)' }} />
+    return <Alert sx={{ width: 20, height: 20, color: 'error.main', transform: 'scale(1.2)' }} />
   } else if (completed) {
-    return <CheckCircleIcon sx={{ width: 20, height: 20, color: 'primary.main', transform: 'scale(1.2)' }} />
+    return <CheckCircle sx={{ width: 20, height: 20, color: 'primary.main', transform: 'scale(1.2)' }} />
   } else {
     return (
       <Box

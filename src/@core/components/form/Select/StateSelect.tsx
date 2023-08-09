@@ -29,9 +29,9 @@ export default function StateSelect({ control, selectedCountry, ...props }: IFie
 
   const loadJson = (): Promise<any> => {
     return new Promise((res, rej) => {
-      // import(`src/@fake-db/countries/states.json`).then(data => {
-      //   res(data?.default)
-      // })
+      import(`src/@fake-db/countries/states.json`).then(data => {
+        res(data?.default)
+      })
     })
   }
   const loadJsonAsync = async () => {

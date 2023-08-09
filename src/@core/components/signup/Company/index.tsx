@@ -16,8 +16,9 @@ import MenuItem from '@mui/material/MenuItem'
 import { useAuth } from 'src/hooks/useAuth'
 
 // ** import form support components
-import { InputField } from 'src/@core/components/form'
+import { InputField, CountrySelect } from 'src/@core/components/form'
 import Map from 'src/@core/components/map'
+import { useForm } from 'react-hook-form'
 
 const CompanyDetails = ({ step }: { step: number }) => {
   // ** Hooks
@@ -27,8 +28,10 @@ const CompanyDetails = ({ step }: { step: number }) => {
   const auth = useAuth()
 
   const onSubmit = (body: any) => {
-    // auth.createCompany(body)
+    auth.createCompany(body)
   }
+
+  const { control } = useForm()
 
   return (
     <Fragment key={step}>
@@ -39,7 +42,6 @@ const CompanyDetails = ({ step }: { step: number }) => {
             name='name'
             label='Company Name'
             placeholder='Enter Company Name'
-            //  @ts-ignore
             control={control}
           />
         </Grid>
@@ -49,7 +51,6 @@ const CompanyDetails = ({ step }: { step: number }) => {
             name='email'
             label='Company Email'
             placeholder='Enter Company Email'
-            //  @ts-ignore
             control={control}
           />
         </Grid>
@@ -59,7 +60,6 @@ const CompanyDetails = ({ step }: { step: number }) => {
             name='phone'
             label='Contact Number'
             placeholder='Enter Contact Number'
-            //  @ts-ignore
             control={control}
           />
         </Grid>
@@ -69,27 +69,14 @@ const CompanyDetails = ({ step }: { step: number }) => {
             name='website'
             label='Website URL'
             placeholder='Enter Website URL'
-            //  @ts-ignore
             control={control}
           />
         </Grid>
-
-        <Grid item xs={12}>
-          {/* <CountrySelect
-              name='country'
-            //   label='Country'
-              placeholder='Enter country'
-              //  @ts-ignore
-              control={control}
-            /> */}
-        </Grid>
-
         <Grid item xs={6}>
           <InputField
             name='state'
             label='State'
             placeholder='Enter state'
-            //  @ts-ignore
             control={control}
           />
         </Grid>
@@ -99,7 +86,6 @@ const CompanyDetails = ({ step }: { step: number }) => {
             name='city'
             label='City'
             placeholder='Enter city'
-            //  @ts-ignore
             control={control}
           />
         </Grid>
@@ -109,25 +95,9 @@ const CompanyDetails = ({ step }: { step: number }) => {
             name='zip'
             label='Zip code'
             placeholder='Enter zip'
-            //  @ts-ignore
             control={control}
           />
         </Grid>
-
-        <Grid item xs={12}>
-          {/* <Map
-              onSelectLocation={(e: any) => {
-                setValue('longitude', `${e.lng}`)
-                setValue('latitude', `${e.lat}`)
-              }}
-            /> */}
-          {/* {(errors.latitude || errors.longitude) && (
-              <FormHelperText sx={{ color: 'error.main' }} id={`validation-schema-location`}>
-                Location required
-              </FormHelperText>
-            )} */}
-        </Grid>
-
         <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
           <LoadingButton
             fullWidth

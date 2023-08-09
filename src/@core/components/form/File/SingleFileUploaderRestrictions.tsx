@@ -20,9 +20,10 @@ import DropzoneWrapper from 'src/@core/styles/libs/react-dropzone'
 import { CardMedia } from '@mui/material'
 
 interface FileProp {
-  source: string
-  type: 'image' | 'video' | 'doc'
-  bytes: number
+  source?: string
+  type?: 'image' | 'video' | 'doc'
+  bytes?: number
+  file?: any
 }
 
 // Styled component for the heading inside the dropzone area
@@ -85,7 +86,7 @@ const FileUploaderRestrictions = ({
     } else if (file && existFile.type === 'doc') {
       return <iframe width={'100%'} height={'auto'} src={file.source} title={'Report Doc'}></iframe>
     } else {
-      ;('Invalid File')
+      ; ('Invalid File')
     }
   }
 
@@ -116,8 +117,8 @@ const FileUploaderRestrictions = ({
 
   const handleUpload = (file: File) => {
     setStatus('pending')
-    const uploadURL = 'https://api.cloudinary.com/v1_1/dh4lnup4h/auto/upload'
-    const uploadPreset = 'dtztq65u' // 'mfcn3oqs';
+    const uploadURL: string = 'https://api.cloudinary.com/v1_1/dh4lnup4h/auto/upload'
+    const uploadPreset: string = 'dtztq65u' // 'mfcn3oqs';
 
     if (file) {
       const formData = new FormData()
@@ -159,7 +160,6 @@ const FileUploaderRestrictions = ({
           </Box>
         </div>
       )}
-      {/* @ts-ignore */}
       {!_.isEmpty(file) && <FileView file={file} />}
     </DropzoneWrapper>
   )

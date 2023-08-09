@@ -22,7 +22,7 @@ code:not([class*='language-']):after {
 code[class*='language-'] {
   padding: 0;
 }
-.checkboxRemoveHover-bg:hover{
+.checkboxRemoveHover-bg:hover {
   background: none !important;
 }
 
@@ -40,8 +40,15 @@ code[class*='language-'] {
   background-color: #c27413;
 }
 
-.css-1nhqsen .fc .fc-daygrid-event-harness .fc-event{
+.css-1nhqsen .fc .fc-daygrid-event-harness .fc-event {
   background-color: #c27413;
   cursor: pointer;
   border-color: #c27413;
+}
+coin-stats-ticker-widget * {
+  max-width: 500px !important;
+}
+
+.MuiBox-root.css-4mkpz9 {
+  height: 100%;
 }

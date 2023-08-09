@@ -14,7 +14,7 @@ const UserIcon = (props: UserIconProps) => {
   // ** Props
   const { icon, iconProps, componentType } = props
 
-  const IconTag = icon
+  const IconTag: any = icon
 
   let styles
 
@@ -40,8 +40,7 @@ const UserIcon = (props: UserIconProps) => {
     return null
   }
 
-  // @ts-ignore
-  return <IconTag {...iconProps} style={{ ...styles }} />
+  return <IconTag {...iconProps} style={{ ...(styles as any) }} />
 }
 
 export default UserIcon

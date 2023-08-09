@@ -1,3 +1,4 @@
+import { IChannels } from 'src/types/apps/channels'
 import { IUser } from 'src/types/apps/user'
 
 export type ErrCallbackType = (err: { [key: string]: string }) => void
@@ -11,28 +12,33 @@ export type ChannelParams = {
   id: number
 }
 
+export type ResetPasswordParams = {
+  password: string
+}
+
 export type RegisterParams = {
-  first_name: '',
-  last_name: '',
-  password: '',
-  confirm_password: '',
-  email: '',
-  gender: 'MALE' | 'FEMALE',
+  email: string
+  username: string
+  password: string
   role: 'TEACHER' | 'STUDENT'
 }
 
 export type UserDataType = {
-  id: string
+  id: string | number
   gender?: string
   role: { id: string; code: string }
   email: string
   fullName: string
   first_name?: string
-  last_name: string
+  last_name?: string
   username: string
   password: string
   avatar?: string | null
   user?: any
+  profile_picture?: string | null
+  activeChannel: {
+    channel: IChannels
+  }
 }
 
 export type AuthValuesType = {
@@ -40,15 +46,18 @@ export type AuthValuesType = {
   setLoading: (value: boolean) => void
   logout: () => void
   isInitialized: boolean
-  user: UserDataType | any
+  user: UserDataType | null
   setUser: (value: UserDataType | null) => void
   setIsInitialized: (value: boolean) => void
   login: (params: LoginParams, errorCallback?: ErrCallbackType) => void
+  handleSwitchChannel: (params: number, errorCallback?: ErrCallbackType) => void
   register: (params: RegisterParams, query?: any, errorCallback?: ErrCallbackType) => void
+  createAccount: (body: ISignupFormValues, errorCallback?: ErrCallbackType) => void
   profileUpdate: (id: string, body: IUser, errorCallback?: ErrCallbackType) => void
   changeCredentials: (body: IUser, errorCallback?: ErrCallbackType) => void
-  forgotPassword: (body: IUser, errorCallback?: ErrCallbackType) => void
-  resetPassword: (body: ResetPasswordParams, token: string, errorCallback?: ErrCallbackType) => void,
+  createCompany: (body: ICompanyFormValues, errorCallback?: ErrCallbackType) => void
+  forgotPassword: (body: ICompanyFormValues) => void
+  resetPassword: (body: ResetPasswordParams, token: string, errorCallback?: ErrCallbackType) => void
   // Signup related
   activeStep: number
   steps: { title: string; subtitle: string }[]
@@ -60,9 +69,14 @@ export type AuthValuesType = {
   status: 'idle' | 'pending' | 'success' | 'error'
 }
 
-export type SocketValuesType = {
-  socket: any
-  setSocket?: any
+export type PusherValuesType = {
+  message: any
+  setMessage?: any
+}
+
+export type ChannelIdType = {
+  channelId: any
+  setChannelId?: any
 }
 
 export interface ISignupFormValues {
@@ -80,13 +94,4 @@ export interface ICompanyFormValues {
   email: string
   address: string
   API_ERROR?: {}
-}
-
-export interface ForgotPasswordParams {
-  email: string
-}
-
-
-export type ResetPasswordParams = {
-  password: string
 }

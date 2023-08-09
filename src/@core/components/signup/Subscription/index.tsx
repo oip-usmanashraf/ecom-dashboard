@@ -10,7 +10,8 @@ import PricingPlans from 'src/@core/components/subscription/SubsctionPlans'
 import SubscriptionHeader from 'src/@core/components/subscription/SubscriptionHeader'
 import Checkout from 'src/@core/components/Checkout'
 
-// import { useSubscription } from 'src/@core/hooks/form/useSubscription'
+import { useSubscription } from 'src/@core/hooks/form/useSubscription'
+import { ISubscription } from 'src/types/apps/subscription'
 
 // ** Styled Components
 const CardContent = styled(MuiCardContent)<CardContentProps>(({ theme }) => ({
@@ -26,13 +27,13 @@ const CardContent = styled(MuiCardContent)<CardContentProps>(({ theme }) => ({
 
 const Pricing = ({ step }: { step: number }) => {
   // const { getSubscriptions, store } = useSubscription(null)
-  // const { getSubscriptions } = useSubscription(null)
+  const { getSubscriptions } = useSubscription(null)
 
   const [plan, setPlan] = useState<'PRE_DEFINED' | 'CUSTOM'>('PRE_DEFINED')
   const [subscription, setSubscription] = useState<{ [key: string]: any } | null>(null)
 
   useEffect(() => {
-    // getSubscriptions({ query: '' })
+    getSubscriptions({ query: '' })
   }, [])
 
   const handleChange = (e: ChangeEvent<{ checked: boolean }>) => {
@@ -46,7 +47,6 @@ const Pricing = ({ step }: { step: number }) => {
   return (
     <Fragment key={step}>
       {subscription ? (
-        // @ts-ignore
         <Checkout subscription={''} />
       ) : (
         <CardContent>

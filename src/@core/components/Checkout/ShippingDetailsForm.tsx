@@ -32,13 +32,6 @@ const ShippingDetailsForm = ({ onSubmitShipping }: IShippingDetailsForm) => {
             name: body.name,
             email: body.email,
             subscriptionId: "0570a3f3-012f-4b0f-9957-6dce454d7b41",
-            // shipping: {
-            //     line1: body.address.line1,
-            //     postal_code: body.address.postal_code,
-            //     city: body.address.city,
-            //     state: body.address.state,
-            //     country: body.address.country
-            // }
         }
         onSubmitShipping(shipping)
     }
@@ -61,7 +54,6 @@ const ShippingDetailsForm = ({ onSubmitShipping }: IShippingDetailsForm) => {
                             placeholder="Full Name"
                             label="Full Name"
                             name='name'
-                            // @ts-ignore
                             control={control}
                         />
                     </Grid>
@@ -71,60 +63,9 @@ const ShippingDetailsForm = ({ onSubmitShipping }: IShippingDetailsForm) => {
                             placeholder="Enter email"
                             label="Email"
                             name='email'
-                            // @ts-ignore
                             control={control}
                         />
                     </Grid>
-                    {/* <Grid item xs={12}>
-                        <InputField
-                            type="text"
-                            placeholder="Enter address line 1"
-                            label="address line 1"
-                            name='address.line1'
-                            // @ts-ignore
-                            control={control}
-                        />
-                    </Grid> */}
-                    {/* <Grid item xs={12}>
-                        <InputField
-                            type="text"
-                            placeholder="Enter Your Postal Code"
-                            label="postal code"
-                            name='address.postal_code'
-                            // @ts-ignore
-                            control={control}
-                        />
-                    </Grid> */}
-                    {/* <Grid item xs={12}>
-                        <InputField
-                            type="text"
-                            label=""
-                            placeholder="City"
-                            name='address.city'
-                            // @ts-ignore
-                            control={control}
-                        />
-                    </Grid> */}
-                    {/* <Grid item xs={12}>
-                        <InputField
-                            type="text"
-                            placeholder="Enter Your State"
-                            label="state"
-                            name='address.state'
-                            // @ts-ignore
-                            control={control}
-                        />
-                    </Grid> */}
-                    {/* <Grid item xs={12}>
-                        <InputField
-                            type="text"
-                            placeholder="Country"
-                            label="country"
-                            name='address.country'
-                            // @ts-ignore
-                            control={control}
-                        />
-                    </Grid> */}
                     <LoadingButton type='submit' fullWidth >Go Proceed to next</LoadingButton>
                 </Grid>
             </Card>

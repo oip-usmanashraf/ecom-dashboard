@@ -21,9 +21,9 @@ import clsx from 'clsx'
 import { usePopper } from 'react-popper'
 
 // ** Icons Imports
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import ChevronDown from 'mdi-material-ui/ChevronDown'
+import ChevronLeft from 'mdi-material-ui/ChevronLeft'
+import ChevronRight from 'mdi-material-ui/ChevronRight'
 
 // ** Theme Config Import
 import themeConfig from 'src/configs/themeConfig'
@@ -144,7 +144,7 @@ const HorizontalNavGroup = (props: Props) => {
   }, [router.asPath])
 
   const IconTag = item.icon ? item.icon : navSubItemIcon
-  const ToggleIcon = direction === 'rtl' ? KeyboardArrowLeftIcon : KeyboardArrowRightIcon
+  const ToggleIcon = direction === 'rtl' ? ChevronLeft : ChevronRight
 
   const WrapperCondition = horizontalMenuToggle === 'click'
   const MainWrapper = WrapperCondition ? ClickAwayListener : 'div'
@@ -186,14 +186,14 @@ const HorizontalNavGroup = (props: Props) => {
                 ...(menuOpen ? { backgroundColor: theme.palette.action.hover } : {}),
                 ...(!hasParent
                   ? {
-                    borderRadius: '8px',
-                    '&.Mui-selected': {
-                      backgroundColor: theme.palette.primary.main,
-                      '& .MuiTypography-root, & .MuiListItemIcon-root, & .MuiSvgIcon-root': {
-                        color: 'common.white'
+                      borderRadius: '8px',
+                      '&.Mui-selected': {
+                        backgroundColor: theme.palette.primary.main,
+                        '& .MuiTypography-root, & .MuiListItemIcon-root, & .MuiSvgIcon-root': {
+                          color: 'common.white'
+                        }
                       }
                     }
-                  }
                   : {})
               }}
             >
@@ -238,7 +238,7 @@ const HorizontalNavGroup = (props: Props) => {
                   {hasParent ? (
                     <ToggleIcon sx={{ color: 'text.secondary' }} />
                   ) : (
-                    <ExpandMoreIcon sx={{ color: 'text.secondary' }} />
+                    <ChevronDown sx={{ color: 'text.secondary' }} />
                   )}
                 </Box>
               </Box>

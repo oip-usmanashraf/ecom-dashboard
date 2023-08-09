@@ -9,4 +9,4 @@ Add ModuleHook = src/@core/hooks/apps
 src/@core/components/apps/module-name/components/TableHeader
 src/@core/components/apps/module-name/components/Table
 src/pages/module-name
-https://demos.pixinvent.com/materialize-nextjs-admin-template/demo-1/login/
+https://demos.pixinvent.com/materialize-nextjs-admin-template/demo-1/login/?returnUrl=%2Fdashboards%2Fcrm%2F

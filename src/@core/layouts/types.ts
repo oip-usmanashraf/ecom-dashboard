@@ -85,11 +85,3 @@ export type ChannelLayoutProps = {
 export type BlankLayoutWithAppBarProps = {
   children: ReactNode
 }
-
-
-export type IRenderClient = {
-  imageUrl: string
-  avatarColor?: ThemeColor
-  name: string 
-  variant?: 'circular' | 'rounded' | 'square'
-}

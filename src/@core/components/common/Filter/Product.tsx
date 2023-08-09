@@ -45,17 +45,14 @@ export default function CountrySelect({ onSelect }: IField) {
     //     options={store.projects}
     //     autoHighlight
     //     getOptionLabel={(option) =>
-    //         // @ts-ignore
     //         typeof option === 'string' ? option : option?.name || 'Not possible'
     //     }
     //     isOptionEqualToValue={() => true}
     //     value={selected}
-    //     // @ts-ignore
     //     onChange={(event: any, newValue: IProject) => {
     //         newValue && setSelected(newValue)
     //         newValue && onSelect(newValue)
     //     }}
-    //     // @ts-ignore
     //     renderOption={(props, option: IProject) => (
     //         <Box component="li" key={option && option.id} sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
     //             {option && option.name}

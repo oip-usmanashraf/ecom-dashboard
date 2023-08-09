@@ -46,7 +46,7 @@ const MenuNavLink = styled(ListItemButton)<
   ListItemButtonProps & { component?: ElementType; target?: '_blank' | undefined }
 >(({ theme }) => ({
   width: '100%',
-  borderRadius: 8,
+  borderRadius: 2,
   transition: 'padding-left .25s ease-in-out',
   '&.active': {
     '&, &:hover': {
@@ -142,16 +142,12 @@ const VerticalNavLink = ({
           px: parent ? '0 !important' : `${theme.spacing(navCollapsed && !navHover ? 2 : 3)} !important`
         }}
       >
-        <Link
-          passHref
-          href={item.path === undefined ? '/category' : `${item.path}`}
-          style={{ width: '100%', textDecoration: 'none' }}
-        >
+        <Link passHref href={item.path === undefined ? '/' : `${item.path}`}>
           <MenuNavLink
             component={'a'}
             className={isNavLinkActive() ? 'active' : ''}
             {...(item.openInNewTab ? { target: '_blank' } : null)}
-            onClick={(e: any) => {
+            onClick={e => {
               if (item.path === undefined) {
                 e.preventDefault()
                 e.stopPropagation()

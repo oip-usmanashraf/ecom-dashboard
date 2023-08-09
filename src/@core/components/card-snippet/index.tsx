@@ -16,11 +16,13 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 
 // ** Icons Imports
-import CodeIcon from '@mui/icons-material/Code';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import JavascriptIcon from '@mui/icons-material/Javascript';
+import CodeTags from 'mdi-material-ui/CodeTags'
+import ContentCopy from 'mdi-material-ui/ContentCopy'
+import LanguageJavascript from 'mdi-material-ui/LanguageJavascript'
+import LanguageTypescript from 'mdi-material-ui/LanguageTypescript'
 
 // ** Third Party Components
+import Prism from 'prismjs'
 import toast from 'react-hot-toast'
 
 // ** Types
@@ -43,7 +45,7 @@ const CardSnippet = (props: CardSnippetProps) => {
 
   // ** Highlight code on mount
   useEffect(() => {
-    // Prism.highlightAll()
+    Prism.highlightAll()
   }, [showCode, tabValue])
 
   const codeToCopy = () => {
@@ -83,12 +85,12 @@ const CardSnippet = (props: CardSnippetProps) => {
         {...(hidden
           ? {}
           : {
-            action: (
-              <IconButton onClick={() => setShowCode(!showCode)}>
-                <CodeIcon fontSize='small' />
-              </IconButton>
-            )
-          })}
+              action: (
+                <IconButton onClick={() => setShowCode(!showCode)}>
+                  <CodeTags fontSize='small' />
+                </IconButton>
+              )
+            })}
       />
       <CardContent>{children}</CardContent>
       {hidden ? null : (
@@ -106,12 +108,12 @@ const CardSnippet = (props: CardSnippetProps) => {
               >
                 {code.tsx !== null ? (
                   <ToggleButton value='tsx'>
-                    <JavascriptIcon fontSize='small' />
+                    <LanguageTypescript fontSize='small' />
                   </ToggleButton>
                 ) : null}
                 {code.jsx !== null ? (
                   <ToggleButton value='jsx'>
-                    <JavascriptIcon fontSize='small' />
+                    <LanguageJavascript fontSize='small' />
                   </ToggleButton>
                 ) : null}
               </ToggleButtonGroup>
@@ -126,7 +128,7 @@ const CardSnippet = (props: CardSnippetProps) => {
                   color: theme => theme.palette.grey[100]
                 }}
               >
-                <ContentCopyIcon fontSize='small' />
+                <ContentCopy fontSize='small' />
               </IconButton>
             </Tooltip>
             <Box>{renderCode()}</Box>

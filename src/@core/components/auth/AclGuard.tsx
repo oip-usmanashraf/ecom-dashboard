@@ -15,7 +15,7 @@ import { buildAbilityFor } from 'src/configs/acl'
 
 // ** Component Import
 import NotAuthorized from 'src/pages/401'
-import BlankLayout from 'src/@core/layouts/GuestLayout'
+import BlankLayout from 'src/@core/layouts/BlankLayout'
 
 // ** Hooks
 import { useAuth } from 'src/hooks/useAuth'

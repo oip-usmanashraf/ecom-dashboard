@@ -39,6 +39,7 @@ import MuiAutocomplete from './autocomplete'
 import MuiToggleButton from './toggleButton'
 import MuiDateTimePicker from './dateTimePicker'
 import MuiDrawer from './drawer'
+import MuiModal from './modal'
 
 const Overrides = (theme: Theme, settings: Settings) => {
   const { skin } = settings
@@ -61,6 +62,8 @@ const Overrides = (theme: Theme, settings: Settings) => {
   const cards = MuiCard(theme, skin)
   const backdrop = MuiBackdrop(theme)
   const dataGrid = MuiDataGrid(theme)
+  // const modal = MuiModal(theme)
+  const modal = MuiModal(theme, skin)
   const drawer = MuiDrawer(theme)
   const switches = MuiSwitches(theme)
   const timeline = MuiTimeline(theme)
@@ -94,6 +97,7 @@ const Overrides = (theme: Theme, settings: Settings) => {
     backdrop,
     dataGrid,
     drawer,
+    modal,
     MuiPaper,
     progress,
     snackbar,

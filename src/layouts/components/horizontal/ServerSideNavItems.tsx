@@ -2,8 +2,7 @@
 import { useEffect, useState } from 'react'
 
 // ** Import All Icons
-// import * as Icons from 'mdi-material-ui'
-import * as Icons from '@mui/icons-material'
+import * as Icons from 'mdi-material-ui'
 
 // ** Axios Import
 import axios from 'axios'
@@ -27,9 +26,9 @@ const ServerSideNavItems = () => {
 
       const finalMenuArray = (items: HorizontalNavItemsType) => {
         return items.map((item: any) => {
-          if (item.icon) {
+          if (item?.icon) {
             // @ts-ignore
-            item.icon = Icons[item.icon]
+            item.icon = Icons[item?.icon]
 
             if (item.children) {
               finalMenuArray(item.children)

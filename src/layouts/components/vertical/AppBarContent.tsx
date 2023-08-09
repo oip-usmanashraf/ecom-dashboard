@@ -3,7 +3,7 @@ import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 
 // ** Icons Imports
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from 'mdi-material-ui/Menu'
 
 // ** Type Import
 import { Settings } from 'src/@core/context/settingsContext'
@@ -37,9 +37,9 @@ const AppBarContent = (props: Props) => {
         <Autocomplete hidden={hidden} settings={settings} />
       </Box>
       <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center' }}>
-        <LanguageDropdown settings={settings} saveSettings={saveSettings} />
-        <ModeToggler settings={settings} saveSettings={saveSettings} />
-        <NotificationDropdown settings={settings} />
+        {/* <LanguageDropdown settings={settings} saveSettings={saveSettings} />
+        <ModeToggler settings={settings} saveSettings={saveSettings} /> */}
+        {/* <NotificationDropdown settings={settings} /> */}
         <UserDropdown settings={settings} />
       </Box>
     </Box>

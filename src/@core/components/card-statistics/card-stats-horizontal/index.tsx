@@ -10,8 +10,8 @@ import CardContent from '@mui/material/CardContent'
 import CustomAvatar from 'src/@core/components/mui/avatar'
 
 // ** Icons Imports
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ChevronUp from 'mdi-material-ui/ChevronUp'
+import ChevronDown from 'mdi-material-ui/ChevronDown'
 
 // ** Types Imports
 import { CardStatsHorizontalProps } from 'src/@core/components/card-statistics/types'
@@ -27,7 +27,7 @@ const CardStatsHorizontal = (props: CardStatsHorizontalProps) => {
   // ** Props
   const { title, color, icon, stats, trend, trendNumber } = props
 
-  const TrendIcon = trend === 'positive' ? ExpandLessIcon : ExpandMoreIcon
+  const TrendIcon = trend === 'positive' ? ChevronUp : ChevronDown
 
   return (
     <Card>

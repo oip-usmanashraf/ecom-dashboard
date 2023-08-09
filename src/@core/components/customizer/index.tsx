@@ -18,10 +18,9 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import MuiDrawer, { DrawerProps } from '@mui/material/Drawer'
 
 // ** Icons Imports
-import SettingsIcon from '@mui/icons-material/Settings';
-import CheckIcon from '@mui/icons-material/Check';
-import CloseIcon from '@mui/icons-material/Close';
-
+import Cog from 'mdi-material-ui/Cog'
+import Check from 'mdi-material-ui/Check'
+import Close from 'mdi-material-ui/Close'
 
 // ** Type Import
 import { Settings } from 'src/@core/context/settingsContext'
@@ -104,7 +103,7 @@ const Customizer = () => {
   return (
     <div className='customizer'>
       <Toggler className='customizer-toggler' onClick={() => setOpen(true)}>
-        <SettingsIcon fontSize='small' sx={{ color: 'common.white' }} />
+        <Cog fontSize='small' sx={{ color: 'common.white' }} />
       </Toggler>
       <Drawer open={open} hideBackdrop anchor='right' variant='persistent'>
         <Box
@@ -129,7 +128,7 @@ const Customizer = () => {
               transform: 'translateY(-50%)'
             }}
           >
-            <CloseIcon fontSize='small' />
+            <Close fontSize='small' />
           </IconButton>
         </Box>
         <PerfectScrollbar options={{ wheelPropagation: false }}>
@@ -196,7 +195,7 @@ const Customizer = () => {
                     ...(themeColor === 'primary' ? { boxShadow: 9 } : { '&:hover': { boxShadow: 4 } })
                   }}
                 >
-                  {themeColor === 'primary' ? <CheckIcon fontSize='small' /> : null}
+                  {themeColor === 'primary' ? <Check fontSize='small' /> : null}
                 </ColorBox>
                 <ColorBox
                   onClick={() => handleChange('themeColor', 'secondary')}
@@ -205,7 +204,7 @@ const Customizer = () => {
                     ...(themeColor === 'secondary' ? { boxShadow: 9 } : { '&:hover': { boxShadow: 4 } })
                   }}
                 >
-                  {themeColor === 'secondary' ? <CheckIcon fontSize='small' /> : null}
+                  {themeColor === 'secondary' ? <Check fontSize='small' /> : null}
                 </ColorBox>
                 <ColorBox
                   onClick={() => handleChange('themeColor', 'success')}
@@ -214,7 +213,7 @@ const Customizer = () => {
                     ...(themeColor === 'success' ? { boxShadow: 9 } : { '&:hover': { boxShadow: 4 } })
                   }}
                 >
-                  {themeColor === 'success' ? <CheckIcon fontSize='small' /> : null}
+                  {themeColor === 'success' ? <Check fontSize='small' /> : null}
                 </ColorBox>
                 <ColorBox
                   onClick={() => handleChange('themeColor', 'error')}
@@ -223,7 +222,7 @@ const Customizer = () => {
                     ...(themeColor === 'error' ? { boxShadow: 9 } : { '&:hover': { boxShadow: 4 } })
                   }}
                 >
-                  {themeColor === 'error' ? <CheckIcon fontSize='small' /> : null}
+                  {themeColor === 'error' ? <Check fontSize='small' /> : null}
                 </ColorBox>
                 <ColorBox
                   onClick={() => handleChange('themeColor', 'warning')}
@@ -232,7 +231,7 @@ const Customizer = () => {
                     ...(themeColor === 'warning' ? { boxShadow: 9 } : { '&:hover': { boxShadow: 4 } })
                   }}
                 >
-                  {themeColor === 'warning' ? <CheckIcon fontSize='small' /> : null}
+                  {themeColor === 'warning' ? <Check fontSize='small' /> : null}
                 </ColorBox>
                 <ColorBox
                   onClick={() => handleChange('themeColor', 'info')}
@@ -242,7 +241,7 @@ const Customizer = () => {
                     ...(themeColor === 'info' ? { boxShadow: 9 } : { '&:hover': { boxShadow: 4 } })
                   }}
                 >
-                  {themeColor === 'info' ? <CheckIcon fontSize='small' /> : null}
+                  {themeColor === 'info' ? <Check fontSize='small' /> : null}
                 </ColorBox>
               </Box>
             </Box>

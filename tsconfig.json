@@ -20,14 +20,14 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    // "paths": {
-    //   "apexcharts": [
-    //     "./node_modules/apexcharts-clevision"
-    //   ],
-    //   "apexcharts/*": [
-    //     "./node_modules/apexcharts-clevision/*"
-    //   ],
-    // }
+    "paths": {
+      "apexcharts": [
+        "./node_modules/apexcharts-clevision"
+      ],
+      "apexcharts/*": [
+        "./node_modules/apexcharts-clevision/*"
+      ],
+    }
   },
   "include": [
     "src",

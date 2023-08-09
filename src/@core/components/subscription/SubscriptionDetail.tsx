@@ -5,8 +5,7 @@ import Typography from '@mui/material/Typography'
 import Box, { BoxProps } from '@mui/material/Box'
 
 // ** Icons Imports
-import CircleOutlinedIcon from '@mui/icons-material/CircleOutlined';
-
+import CircleOutline from 'mdi-material-ui/CircleOutline'
 
 // ** Util Import
 import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
@@ -59,7 +58,7 @@ const PlanDetails = (props: PricingPlanProps) => {
     const renderFeatures = () => {
         return subscription?.planBenefits.map((item: string, index: number) => (
             <Box key={index} sx={{ display: 'flex', alignItems: 'center' }}>
-                <CircleOutlinedIcon sx={{ mr: 2.5, fontSize: '0.875rem', color: 'text.secondary' }} />
+                <CircleOutline sx={{ mr: 2.5, fontSize: '0.875rem', color: 'text.secondary' }} />
                 <Typography variant='body2'>{item}</Typography>
             </Box>
         ))

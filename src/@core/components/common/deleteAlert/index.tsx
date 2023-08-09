@@ -37,8 +37,8 @@ const DeleteAlert = ({
                 </DialogContentText>
             </DialogContent>
             <DialogActions className='dialog-actions-dense'>
-                <Button onClick={onAgree}>Yes</Button>
-                <Button onClick={handleClose}>No</Button>
+                <Button onClick={handleClose}>Disagree</Button>
+                <Button onClick={onAgree}>Agree</Button>
             </DialogActions>
         </Dialog>
     )

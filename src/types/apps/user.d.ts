@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface IUser {
+  id?: string
   [key: string]: any
-  email: any
 }

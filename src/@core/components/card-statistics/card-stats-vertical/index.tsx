@@ -9,8 +9,8 @@ import CustomChip from 'src/@core/components/mui/chip'
 import CustomAvatar from 'src/@core/components/mui/avatar'
 
 // ** Icons Imports
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ChevronUp from 'mdi-material-ui/ChevronUp'
+import ChevronDown from 'mdi-material-ui/ChevronDown'
 
 // ** Types Imports
 import { CardStatsVerticalProps } from 'src/@core/components/card-statistics/types'
@@ -19,7 +19,7 @@ const CardStatsVertical = (props: CardStatsVerticalProps) => {
   // ** Props
   const { title, color, icon, stats, trend, chipText, trendNumber } = props
 
-  const TrendIcon = trend === 'positive' ? ExpandLessIcon : ExpandMoreIcon
+  const TrendIcon = trend === 'positive' ? ChevronUp : ChevronDown
 
   return (
     <Card>

@@ -12,6 +12,7 @@ import { useAuth } from 'src/hooks/useAuth'
 
 // ** import form support components
 import { InputField, RadioField } from 'src/@core/components/form'
+import { useForm } from 'react-hook-form'
 
 const PersnolDetails = ({ step }: { step: number }) => {
   // ** Hooks
@@ -19,9 +20,10 @@ const PersnolDetails = ({ step }: { step: number }) => {
   //     form: { control, handleSubmit, formState: { errors } }
   // } = usePersnolInfo()
   const auth = useAuth()
+  const { control } = useForm()
 
   const onSubmit = (body: any) => {
-    // auth.createAccount(body)
+    auth.createAccount(body)
   }
 
   return (
@@ -33,7 +35,6 @@ const PersnolDetails = ({ step }: { step: number }) => {
             name='first_name'
             label='First Name'
             placeholder='Enter First Name'
-            //  @ts-ignore
             control={control}
           />
         </Grid>
@@ -42,7 +43,6 @@ const PersnolDetails = ({ step }: { step: number }) => {
             name='last_name'
             label='Last Name'
             placeholder='Enter Last Name'
-            //  @ts-ignore
             control={control}
           />
         </Grid>
@@ -51,7 +51,6 @@ const PersnolDetails = ({ step }: { step: number }) => {
             name='email'
             label='Email'
             placeholder='Enter Email'
-            //  @ts-ignore
             control={control}
           />
         </Grid>
@@ -60,7 +59,6 @@ const PersnolDetails = ({ step }: { step: number }) => {
             name='password'
             label='Password'
             placeholder='Enter Password'
-            //  @ts-ignore
             control={control}
           />
         </Grid>
@@ -69,7 +67,6 @@ const PersnolDetails = ({ step }: { step: number }) => {
             name='confirm_password'
             label='Confirm Password'
             placeholder='Enter Confirm Password'
-            //  @ts-ignore
             control={control}
           />
         </Grid>
@@ -81,11 +78,9 @@ const PersnolDetails = ({ step }: { step: number }) => {
               { value: 'MALE', label: 'Male' },
               { value: 'FEMALE', label: 'Female' }
             ]}
-            //  @ts-ignore
             control={control}
           />
         </Grid>
-
         <Grid item xs={12}>
           <LoadingButton
             fullWidth

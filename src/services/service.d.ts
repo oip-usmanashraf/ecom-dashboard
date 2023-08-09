@@ -1,6 +1,6 @@
 
 export interface GetParams {
-    query?: { [key: string]: string }
+    query?: string
     page?: string
     limit?: string
 }

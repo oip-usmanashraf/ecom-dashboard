@@ -1,5 +1,3 @@
-
-
 // ** Redux Imports
 import { Dispatch } from 'redux'
 import { createSlice, createAsyncThunk, Slice } from '@reduxjs/toolkit'
@@ -14,14 +12,14 @@ import { AuthServices } from 'src/services'
 import { IUser } from 'src/types/apps/user'
 
 interface InitialState {
-    user: IUser;
-    accessToken: string,
-    refreshToken: string,
+  user: IUser
+  accessToken: string
+  refreshToken: string
 }
 
 interface Redux {
-    getState: any
-    dispatch: Dispatch<any>
+  getState: any
+  dispatch: Dispatch<any>
 }
 
 // // ** Fetch Client
@@ -43,18 +41,18 @@ interface Redux {
 
 // ** Add Client
 export const loginAction = createAsyncThunk(
-    'auth/login',
-    async (body: { [key: string]: number | string }, { getState, dispatch }: Redux) => {
-        try {
-            const { data } = await AuthServices.login(body);
-            // dispatch(fetchClientsAction(getState().user.params))
-            toast.success("Login succesfully!")
-            return data;
-        } catch (error: any) {
-            toast.error(error.response.data.message || "Something went wrong!")
-            return error.response.data;
-        }
+  'auth/login',
+  async (body: { [key: string]: number | string }, { getState, dispatch }: Redux) => {
+    try {
+      const { data } = await AuthServices.login(body)
+      // dispatch(fetchClientsAction(getState().user.params))
+      toast.success('Login succesfully!')
+      return data
+    } catch (error: any) {
+      toast.error(error.response.data.message || 'Something went wrong!')
+      return error.response.data
     }
+  }
 )
 
 // ** Add Client
@@ -89,29 +87,28 @@ export const loginAction = createAsyncThunk(
 //     }
 // )
 
-// @ts-ignore
-export const appAuthSlice: Slice<InitialState, {}, "auth"> = createSlice({
-    name: 'auth',
-    initialState: {
-        user: {},
-        accessToken: "",
-        refreshToken: "",
-    },
-    reducers: {},
-    // extraReducers: builder => {
-    //     builder.addCase(fetchClientsAction.fulfilled, (state, action) => {
-    //         const { data } = action.payload;
+export const appAuthSlice: Slice<InitialState, {}, 'auth'> = createSlice({
+  name: 'auth',
+  initialState: {
+    user: {},
+    accessToken: '',
+    refreshToken: ''
+  },
+  reducers: {}
+  // extraReducers: builder => {
+  //     builder.addCase(fetchClientsAction.fulfilled, (state, action) => {
+  //         const { data } = action.payload;
 
-    //         state.clients = data.clients || []
-    //         state.total = data.clients.length || 0
-    //         // state.params = action.payload.params
-    //         // state.allData = action.payload.allData
-    //     }),
-    //         builder.addCase(fetchClientAction.fulfilled, (state, action) => {
-    //             const { id } = action.payload;
-    //             state.client = state.clients.find((client: any) => client.id === id) || {};
-    //         })
-    // }
+  //         state.clients = data.clients || []
+  //         state.total = data.clients.length || 0
+  //         // state.params = action.payload.params
+  //         // state.allData = action.payload.allData
+  //     }),
+  //         builder.addCase(fetchClientAction.fulfilled, (state, action) => {
+  //             const { id } = action.payload;
+  //             state.client = state.clients.find((client: any) => client.id === id) || {};
+  //         })
+  // }
 })
 
 export default appAuthSlice.reducer

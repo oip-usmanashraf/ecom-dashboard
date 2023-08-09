@@ -18,8 +18,8 @@ import ListItemButton from '@mui/material/ListItemButton'
 import clsx from 'clsx'
 
 // ** Icons Imports
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import ChevronLeft from 'mdi-material-ui/ChevronLeft'
+import ChevronRight from 'mdi-material-ui/ChevronRight'
 
 // ** Configs Import
 import themeConfig from 'src/configs/themeConfig'
@@ -61,12 +61,12 @@ const MenuItemTextWrapper = styled(Box)<BoxProps>(() => ({
   ...(themeConfig.menuTextTruncate && { overflow: 'hidden' })
 }))
 
-const MenuGroupToggleRightIcon = styled(KeyboardArrowRightIcon)(({ theme }) => ({
+const MenuGroupToggleRightIcon = styled(ChevronRight)(({ theme }) => ({
   color: theme.palette.text.secondary,
   transition: 'transform .25s ease-in-out'
 }))
 
-const MenuGroupToggleLeftIcon = styled(KeyboardArrowLeftIcon)(({ theme }) => ({
+const MenuGroupToggleLeftIcon = styled(ChevronLeft)(({ theme }) => ({
   color: theme.palette.text.secondary,
   transition: 'transform .25s ease-in-out'
 }))

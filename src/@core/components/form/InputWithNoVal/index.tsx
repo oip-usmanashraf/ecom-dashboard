@@ -14,7 +14,6 @@ interface IField extends UseControllerProps, BaseTextFieldProps {
   label?: string
   placeholder?: string
   control: UseControllerProps['control'] | any
-  defaultValue?: string | number | readonly string[]
 }
 
 const Field = ({ control, ...props }: IField) => {
@@ -43,8 +42,8 @@ const Field = ({ control, ...props }: IField) => {
         multiline={props.type === 'text-area' ? true : false}
         fullWidth
 
-      // rows={props.rows}
-      // InputProps={props.InputProps}
+        // rows={props.rows}
+        // InputProps={props.InputProps}
       />
       {error && (
         <FormHelperText sx={{ color: 'error.main' }} id={`validation-schema-${name}`}>
