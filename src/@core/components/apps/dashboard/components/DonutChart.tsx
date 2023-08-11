@@ -11,10 +11,10 @@ import ReactApexcharts from 'src/@core/components/react-apexcharts'
 import { Box } from '@mui/material'
 
 const donutColors = {
-  series1: '#F68A1F',
-  series2: '#EDC8A7',
-  series3: '#FCB97B',
-  series4: '#F9A355'
+  series1: '#FA00FF',
+  series2: '#0029FF',
+  series3: '#4A0089',
+  series4: '#0029FF'
 }
 
 const DonutChart = () => {

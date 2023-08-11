@@ -243,10 +243,10 @@ const LoginPage = () => {
               disabled={auth.status === 'pending'}
               loadingPosition='end'
               size='large'
-              variant='contained'
+              variant='outlined'
               type='submit'
             >
-              {auth.status === 'pending' ? 'Logging In' : 'Login'}
+              {auth.status === 'pending' ? 'Logging In' : 'Logins'}
             </LoadingButton>
 
             <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>

@@ -413,7 +413,7 @@ const Page = () => {
                       }}
                       sx={
                         store?.entity?.isLiked
-                          ? { background: 'linear-gradient(360deg, #EFD9AE -73.58%, #B4772C 97.53%)', color: 'black' }
+                          ? { background: 'linear-gradient(135deg, #2862AD 0%, #3D1D91 46.88%, #AE20CA 100%)', color: 'black' }
                           : { color: '#fff', background: 'white' }
                       }
                       aria-label='Like'
@@ -458,7 +458,7 @@ const Page = () => {
                       }}
                       sx={
                         store?.entity?.isSaved
-                          ? { background: 'linear-gradient(360deg, #EFD9AE -73.58%, #B4772C 97.53%)', color: 'black' }
+                          ? { background: 'linear-gradient(135deg, #2862AD 0%, #3D1D91 46.88%, #AE20CA 100%)', color: 'black' }
                           : { color: '#fff', background: 'white' }
                       }
                       aria-label='Save'

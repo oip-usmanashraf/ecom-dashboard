@@ -160,7 +160,7 @@ const LiveSDKDrawer = (props: SidebarAddUserType) => {
                         margin: 'auto',
                         width: '141px',
                         color: '#fff',
-                        background: 'linear-gradient(360deg, #EFD9AE -73.58%, #B4772C 97.53%)'
+                        background: 'linear-gradient(135deg, #2862AD 0%, #3D1D91 46.88%, #AE20CA 100%)'
                     }}
                     type='submit'
                 >

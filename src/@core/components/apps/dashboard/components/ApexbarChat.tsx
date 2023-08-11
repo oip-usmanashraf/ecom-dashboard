@@ -54,7 +54,7 @@ const ApexBarChart = () => {
     //     top: -10
     //   }
     // },
-    colors: ['#FF8A00'],
+    colors: ['#FA00FF'],
     dataLabels: {
       enabled: false
     },

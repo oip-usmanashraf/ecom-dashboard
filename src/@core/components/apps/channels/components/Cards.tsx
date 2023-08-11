@@ -203,9 +203,9 @@ export default function Cards() {
                           cards?.isSubscribed
                             ? { background: 'white', color: 'black' }
                             : {
-                                color: '#fff',
-                                background: 'linear-gradient(360deg, #EFD9AE -73.58%, #B4772C 97.53%)'
-                              }
+                              color: '#fff',
+                              background: 'linear-gradient(135deg, #2862AD 0%, #3D1D91 46.88%, #AE20CA 100%)'
+                            }
                         }
                         sx={{
                           display: 'flex',

@@ -35,6 +35,7 @@ const Layout = (props: LayoutProps) => {
   }, [hidden])
 
   if (settings.layout === 'horizontal') {
+    // <></>
     return <HorizontalLayout {...props}>{children}</HorizontalLayout>
   }
 

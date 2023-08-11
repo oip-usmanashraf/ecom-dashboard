@@ -96,7 +96,7 @@ const StudentDrawer = (props: SidebarAddUserType) => {
                 disabled={store.status === 'pending'}
                 loadingPosition='end'
                 size='small'
-                variant='contained'
+                variant="contained"
                 type='submit'
               >
                 Save as private

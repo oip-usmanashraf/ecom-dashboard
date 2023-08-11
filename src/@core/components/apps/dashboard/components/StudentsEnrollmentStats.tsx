@@ -71,7 +71,7 @@ const Page = () => {
       </Grid>
       <Grid item xs={6} sx={{ height: 'auto', background: 'linear-gradient(135.45deg, #363636 11.55%, #000000 101.52%)', borderRadius: "20px" }}>
         <VerticalBarChart
-          yellow={'#FF8A00'}
+          yellow={'#FA00FF'}
           labelColor={'transparent'}
           borderColor={'transparent'}
           gridLineColor={'transparent'}
@@ -104,8 +104,8 @@ const Page = () => {
               </Box>
               <WavebarChart
                 white={'#fff'}
-                warning={'#FF8A00'}
-                primary={'#FF8A00'}
+                warning={'#FA00FF'}
+                primary={'#FA00FF'}
                 success={'greenyellow'}
                 labelColor={'transparent'}
                 borderColor={'transparent'}
@@ -140,8 +140,8 @@ const Page = () => {
               </Box>
               <WavebarChart
                 white={'#fff'}
-                warning={'#FF8A00'}
-                primary={'#FF8A00'}
+                warning={'#FA00FF'}
+                primary={'#FA00FF'}
                 success={'greenyellow'}
                 labelColor={'transparent'}
                 borderColor={'transparent'}

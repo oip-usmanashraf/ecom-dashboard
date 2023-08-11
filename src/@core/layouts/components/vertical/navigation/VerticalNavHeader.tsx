@@ -531,8 +531,8 @@ const VerticalNavHeader = (props: Props) => {
                   </clipPath>
                 </defs>
               </svg> */}
-              <div style={{ width: 200, height: 'auto' }}>
-                <Image src={'/images/smart-chain-logo.png'} width={200} height={60} />
+              <div style={{ width: 135, height: 'auto' }}>
+                <Image src={'/images/ecom-logo.png'} width={135} height={81} />
               </div>
               {/* <HeaderTitle variant='h6' sx={{ ...menuCollapsedStyles, ...(navCollapsed && !navHover ? {} : { ml: 2 }) }}>
               {themeConfig.templateName}

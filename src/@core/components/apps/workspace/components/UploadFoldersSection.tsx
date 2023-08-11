@@ -66,7 +66,7 @@ const Page = ({ title = 'records', onAgree, id }: { title?: string; onAgree: () 
             margin: 'auto',
             marginBottom: 5,
             color: '#fff',
-            background: 'linear-gradient(360deg, #EFD9AE -73.58%, #B4772C 97.53%)'
+            background: 'linear-gradient(135deg, #2862AD 0%, #3D1D91 46.88%, #AE20CA 100%)'
           }}
           type='submit'
         >
