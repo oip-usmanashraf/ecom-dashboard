@@ -123,20 +123,27 @@ const CommentSection = ({ postId }: ICommunityFeed) => {
     if (type === 'ADD') {
       const { data } = await addComment(commentData)
       if (data?.statusCode === '10000') {
-        setComments([...comments, data?.data])
+        if(Array.isArray(comments)){
+          setComments([...comments, data?.data])
+        }
         reset()
       }
     } else {
       const response = await updateComment(commentId, body)
       if (response?.statusCode === '10000') {
-        const commentIndex = comments?.findIndex(comment => comment?.id === response?.data?.id)
-        const updatedComments = [...comments]
-        updatedComments.splice(commentIndex, 1, response?.data)
-        setComments(updatedComments)
-        reset()
-        setType('ADD')
+        if(Array.isArray(comments)){
+          const commentIndex = comments.findIndex(comment => comment?.id === response?.data?.id)
+          const updatedComments = [...comments]
+          if(commentIndex !== -1){
+            updatedComments.splice(commentIndex, 1, response?.data)
+          }
+          setComments(updatedComments)
+          reset()
+          setType('ADD')
+        }
       }
     }
+    setValue('comment', '')
   }
 
   useEffect(() => {
@@ -204,7 +211,7 @@ const CommentSection = ({ postId }: ICommunityFeed) => {
                 </Box>
               </Stack>
             </form>
-            {!comments?.length ? (
+            {comments === null ? (
               <Skeleton animation='pulse' variant='rounded' sx={{ maxWidth: 750, m: 2, minWidth: 750, height: 100 }} />
             ) : (
               comments?.map((comment: ICommunityFeed) => {
@@ -278,6 +285,7 @@ const CommentSection = ({ postId }: ICommunityFeed) => {
                 )
               })
             )}
+            {!comments?.length ? <Typography>No Comments</Typography> : null}
             {/* {item?.showReply ? <RepliesSection comment={item} videoId={videoId} /> : null}
                       {item?.replies ? (
                         <RepliesList replies={item} comments={comments} setComments={setComments} />

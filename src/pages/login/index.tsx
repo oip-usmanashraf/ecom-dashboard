@@ -246,7 +246,7 @@ const LoginPage = () => {
               variant='outlined'
               type='submit'
             >
-              {auth.status === 'pending' ? 'Logging In' : 'Logins'}
+              {auth.status === 'pending' ? 'Logging In' : 'Login'}
             </LoadingButton>
 
             <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>

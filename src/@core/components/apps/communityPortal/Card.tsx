@@ -25,6 +25,7 @@ import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt'
 import { useFeedComments } from 'src/@core/hooks/apps/useFeedComments'
 import CommentSection from './CommentSection'
 import { useRouter } from 'next/router'
+import styled from '@emotion/styled'
 
 const RowOptions = ({ id }: { id: string }) => {
   const { handleModal, handleDrawer } = useToggleDrawer()
@@ -82,17 +83,41 @@ const RowOptions = ({ id }: { id: string }) => {
   )
 }
 
+const StyledTypography = styled(Typography)(({ variant }) => ({
+  color: '#fff',
+  variant
+}))
+
 // ** renders client column
-export const renderClient = (row: ICommunityFeed) => {
-  if (row && row?.user?.profile_picture) {
-    return <CustomAvatar src={row?.user?.profile_picture} sx={{ mr: 3, width: 34, height: 34 }} />
-  } else {
+export const RenderClient = (props: {
+  profile_picture: string
+  username: string
+  status: string
+  onClick: () => void
+}) => {
+  const { onClick, profile_picture, status, username } = props
+  if (status === 'pending') {
+    return <Skeleton animation='wave' variant='circular' width={40} height={40} />
+  } else if (profile_picture) {
     return (
-      <CustomAvatar skin='light' color={'primary'} sx={{ mr: 3, width: 34, height: 34, fontSize: '1rem' }}>
-        {getInitials(row?.user?.first_name || 'UnKnown')}
-      </CustomAvatar>
+      <Tooltip title="Want To See This User's Posts?" onClick={onClick}>
+        <CustomAvatar src={profile_picture} sx={{ mr: 3, width: 51, height: 51, cursor: 'pointer' }} />
+      </Tooltip>
     )
   }
+
+  return (
+    <Tooltip title="Want To See This User's Posts?" onClick={onClick}>
+      <CustomAvatar
+        skin='light'
+        color={'primary'}
+        sx={{ mr: 3, width: 34, height: 34, fontSize: '1rem', cursor: 'pointer' }}
+        onClick={onClick}
+      >
+        {getInitials(username || 'UnKnown')}
+      </CustomAvatar>
+    </Tooltip>
+  )
 }
 
 const CommunityCard = ({ feeds }: ICommunityFeed) => {
@@ -111,53 +136,45 @@ const CommunityCard = ({ feeds }: ICommunityFeed) => {
   }
 
   return (
-    <Box display={'block'} margin="0  auto">
-      <Card sx={{ maxWidth: "100%", m: 2, minWidth: "100%" }}>
+    <Box display={'block'} margin='0  auto'>
+      <Card sx={{ maxWidth: '100%', m: 2, minWidth: '100%' }}>
         <CardHeader
-          sx={{ cursor: "pointer" }}
+          sx={{ cursor: 'pointer' }}
           avatar={
-            store.status === 'pending' ? (
-              <Skeleton animation='wave' variant='circular' width={40} height={40} />
-            ) : feeds?.user?.profile_picture ? (
-              <Tooltip
-                title="Want To See This User's Posts?"
-                onClick={() => push(`/community-portal/${feeds?.user?.id}`)}
-              >
-                <CustomAvatar
-                  src={feeds?.user?.profile_picture}
-                  sx={{ mr: 3, width: 34, height: 34, cursor: 'pointer' }}
-                />
-              </Tooltip>
-            ) : (
-              <Tooltip
-                title="Want To See This User's Posts?"
-                onClick={() => push(`/community-portal/${feeds?.user?.id}`)}
-              >
-                <CustomAvatar
-                  skin='light'
-                  color={'primary'}
-                  sx={{ mr: 3, width: 34, height: 34, fontSize: '1rem', cursor: 'pointer' }}
-                  onClick={() => push(`/community-portal/${feeds?.user?.id}`)}
-                >
-                  {getInitials(feeds?.user?.first_name + ' ' + feeds?.user?.last_name || 'UnKnown')}
-                </CustomAvatar>
-              </Tooltip>
-            )
+            <RenderClient
+              status={store.status}
+              profile_picture={feeds?.user?.profile_picture}
+              username={`${feeds?.user?.first_name} ${feeds?.user?.last_name}`}
+              onClick={() => {
+                push(`/community-portal/${feeds?.user?.id}`)
+              }}
+            />
           }
           action={feeds?.userId === user?.id ? <RowOptions id={feeds?.id} /> : null}
-          title={feeds?.user?.first_name + ' ' + feeds?.user?.last_name || 'John Doe'}
-          subheader={feeds?.createdAt ? formatDistanceToNow(new Date(feeds?.createdAt), { addSuffix: true }) : null}
-        // onClick={() => push(`/community-portal/${feeds?.user?.id}`)}
+          title={
+            <StyledTypography variant='h6'>{feeds?.user?.first_name + ' ' + feeds?.user?.last_name}</StyledTypography>
+          }
+          subheader={<StyledTypography variant='body2'>2 years</StyledTypography>}
 
+          // subheader={feeds?.createdAt ? formatDistanceToNow(new Date(feeds?.createdAt), { addSuffix: true }) : null}
+          // onClick={() => push(`/community-portal/${feeds?.user?.id}`)}
         />
         <CardContent>
           {
-            <Typography variant='body2' color='text.secondary' component='p'>
+            <StyledTypography variant='body1' color='text.secondary'>
               {feeds?.content || 'No Content Found'}
-            </Typography>
+            </StyledTypography>
           }
+          {!feeds?.image ? null : (
+            <CardMedia
+              component='img'
+              height='300'
+              image={feeds?.image}
+              alt={feeds?.content}
+              sx={{ borderRadius: '14px' , marginTop: '20px' }}
+            />
+          )}
         </CardContent>
-        {!feeds?.image ? null : <CardMedia component='img' height='300' image={feeds?.image} alt={feeds?.content} />}
         <Grid md={6} xs={12} sm={12} marginTop={5} marginLeft={5}>
           <Box display={'flex'} flexWrap={'wrap'}>
             <Button
@@ -178,7 +195,6 @@ const CommunityCard = ({ feeds }: ICommunityFeed) => {
             </Button>
             <Button
               style={{
-
                 border: '#636363',
                 marginBottom: '10px'
               }}

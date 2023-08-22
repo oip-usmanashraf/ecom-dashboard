@@ -79,15 +79,15 @@ const Drawer = (props: Props) => {
   const drawerBgColor = () => {
     if (skin === 'semi-dark' && theme.palette.mode === 'light') {
       return {
-        backgroundColor: theme.palette.customColors.darkBg
+        backgroundColor: 'transparent'
       }
     } else if (skin === 'semi-dark' && theme.palette.mode === 'dark') {
       return {
-        backgroundColor: theme.palette.customColors.lightBg
+        backgroundColor: 'transparent'
       }
     } else {
       return {
-        backgroundColor: theme.palette.background.default
+        backgroundColor: 'transparent'
       }
     }
   }
