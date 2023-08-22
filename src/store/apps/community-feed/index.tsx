@@ -101,14 +101,11 @@ export const addAction = createAsyncThunk(
 export const likeAction = createAsyncThunk(
   'community_feed/like',
   async (id: { id: any | string }, { getState, dispatch }: Redux) => {
-    dispatch(Slice.actions.handleStatus('pending'))
     try {
       const response = await communityFeedService.likePost(id)
-      dispatch(Slice.actions.handleStatus('success'))
       return response.data
     } catch (error: any) {
       toast.error(error.response.data.message || 'Something went wrong!')
-      dispatch(Slice.actions.handleStatus('error'))
       return error.response.data
     }
   }

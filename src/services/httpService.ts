@@ -5,8 +5,8 @@ import authConfig from 'src/configs/auth'
 
 const instance = axios.create({
   // baseURL: 'http://localhost:8002/api/v1', // local
-  baseURL: 'https://c8c4-182-189-125-22.ngrok-free.app/api/v1', // local
-  // baseURL: 'http://128.199.151.93/api/v1', // new IP
+  // baseURL: 'http://localhost:8001/api/v1', // local
+  baseURL: 'http://128.199.151.93/api/v1', // new IP
   timeout: 500000,
   headers: {
     Accept: 'application/json',

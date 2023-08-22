@@ -1,6 +1,9 @@
 html,
 body {
   min-height: 100%;
+  background-image: url('../public/images/background/gridBg.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 #__next {
@@ -37,13 +40,13 @@ code[class*='language-'] {
   font-size: 0.7rem;
   background: transparent;
   border-color: transparent;
-  background-color: #FA00FF;
+  background-color: #fa00ff;
 }
 
 .css-1nhqsen .fc .fc-daygrid-event-harness .fc-event {
-  background-color: #FA00FF;
+  background-color: #fa00ff;
   cursor: pointer;
-  border-color: #FA00FF;
+  border-color: #fa00ff;
 }
 coin-stats-ticker-widget * {
   max-width: 500px !important;
@@ -51,4 +54,10 @@ coin-stats-ticker-widget * {
 
 .MuiBox-root.css-4mkpz9 {
   height: 100%;
+}
+
+ul li.nav-link .active {
+  border-radius: 8px;
+  background: linear-gradient(136deg, rgba(40, 98, 173, 0) 0%, #ae20ca3d 100%);
+  border: 1px solid #fa00ff4a;
 }

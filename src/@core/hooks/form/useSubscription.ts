@@ -4,7 +4,7 @@ import { useEffect, useMemo } from 'react'
 import toast from 'react-hot-toast'
 import _ from 'lodash'
 import { useForm, useFieldArray } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // ** Store Imports
 import { useDispatch, useSelector } from 'react-redux'

@@ -77,7 +77,7 @@ const CommunityHeader = () => {
             setFiles={setFiles}
           />
         </Grid>
-        <Box display={'flex'} marginTop={10}>
+        <Box display={'flex'} marginTop={10} padding={2}>
           <LoadingButton
             disabled={store.status === 'pending'}
             loading={store.status === 'pending'}
@@ -85,7 +85,9 @@ const CommunityHeader = () => {
             style={{
               marginLeft: 'auto',
               border: '#636363',
-              marginBottom: '10px'
+              marginBottom: '10px',
+              background: 'linear-gradient(135deg, #2862AD 0%, #3D1D91 46.88%, #AE20CA 100%)',
+              color:"#fff"
             }}
             aria-label='Share'
             variant='outlined'

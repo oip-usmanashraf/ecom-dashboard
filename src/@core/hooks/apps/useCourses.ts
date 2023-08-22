@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react'
 // ** Third Party Imports
 import toast from 'react-hot-toast'
 import { useFieldArray, useForm, useWatch } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup';
 // ** Store Imports
 import { useDispatch, useSelector } from 'react-redux'
