@@ -27,7 +27,7 @@ import {
   deleteAction,
   fetchAllActionByUser,
   likeAction
-} from 'src/store/apps/community-feed'
+} from 'src/store/apps/community-feed'  
 
 // ** Import Custom hooks
 import useToggleDrawer from 'src/@core/hooks/useToggleDrawer'
@@ -35,7 +35,7 @@ import { communityFeedService } from 'src/services'
 
 const defaultValues = {
   content: '',
-  image: ''
+  // image: ''
 }
 
 export const useCommunityFeed = (serviceId: string | null) => {
@@ -44,10 +44,12 @@ export const useCommunityFeed = (serviceId: string | null) => {
   const store = useSelector((state: RootState) => state.communityFeed)
   const dispatch = useDispatch<AppDispatch>()
 
+  //@ts-ignore
   const form = useForm({
     defaultValues,
     mode: 'onChange',
-    resolver: yupResolver(communityFeedSchema.add)
+    // @ts-ignore
+resolver: yupResolver(communityFeedSchema.add)
   })
 
   useEffect(() => {

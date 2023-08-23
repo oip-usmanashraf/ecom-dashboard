@@ -3,10 +3,14 @@ import axios from 'axios'
 // ** Config
 import authConfig from 'src/configs/auth'
 
+const API_VERSION = 'v1'
+const DEV_URL = `http://128.199.151.93/api/${API_VERSION}`;
+const LOCAL_URL = `http://localhost:8002/api/${API_VERSION}`;
+const PROD_URL = DEV_URL;
+
+const baseURL = DEV_URL;
 const instance = axios.create({
-  // baseURL: 'http://localhost:8002/api/v1', // local
-  // baseURL: 'http://localhost:8001/api/v1', // local
-  baseURL: 'http://128.199.151.93/api/v1', // new IP
+  baseURL,
   timeout: 500000,
   headers: {
     Accept: 'application/json',

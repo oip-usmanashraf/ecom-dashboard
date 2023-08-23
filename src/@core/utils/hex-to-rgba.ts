@@ -2,7 +2,6 @@
  ** Hex color to RGBA color
  */
 export const hexToRGBA = (hexCode: string, opacity: number) => {
-  console.log(hexCode, "zuhaib")
   let hex = hexCode.replace('#', '')
 
   if (hex.length === 3) {

@@ -34,6 +34,17 @@ const Header = styled(Box)<BoxProps>(({ theme }) => ({
   backgroundColor: theme.palette.background.default
 }))
 
+const RenderClient = (props: any) => {
+  if (props?.errors?.thumnail_url?.message) {
+    return (
+      <Typography mt={2} fontWeight={'400'} color={'#FF4D49'} fontSize={'0.75rem'}>
+        {props?.errors?.thumnail_url?.message}
+      </Typography>
+    )
+  }
+  return null;
+}
+
 const ChannelDrawer = (props: SidebarAddUserType) => {
   // ** Props
   const { open, toggle, serviceId } = props
@@ -112,11 +123,7 @@ const ChannelDrawer = (props: SidebarAddUserType) => {
                 minSize={1}
                 control={control}
               />
-              {errors?.thumnail_url && (
-                <Typography mt={2} fontWeight={'400'} color={'#FF4D49'} fontSize={'0.75rem'}>
-                  {errors?.thumnail_url?.message}
-                </Typography>
-              )}
+              <RenderClient errors={errors}/>
             </Grid>
           </Grid>
           <Grid container item xs={12} sm={12}>

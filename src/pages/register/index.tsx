@@ -132,7 +132,8 @@ const Register = () => {
   } = useForm({
     defaultValues,
     mode: 'onBlur',
-    resolver: yupResolver(schema)
+    // @ts-ignore
+resolver: yupResolver(schema)
   })
 
   const onSubmit = (data: FormData) => {

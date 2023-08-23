@@ -43,7 +43,8 @@ export const useTeacher = (serviceId: string | null) => {
   const form = useForm({
     defaultValues,
     mode: 'onChange',
-    resolver: yupResolver(teacherSchema.add)
+    // @ts-ignore
+resolver: yupResolver(teacherSchema.add)
   })
 
   useEffect(() => {

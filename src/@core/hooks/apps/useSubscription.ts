@@ -45,7 +45,8 @@ export const useSubscription = (serviceId: string | null) => {
   const form = useForm({
     defaultValues,
     mode: 'onChange',
-    resolver: yupResolver(subscriptiontSchema.add)
+    // @ts-ignore
+resolver: yupResolver(subscriptiontSchema.add)
   })
 
   useEffect(() => {

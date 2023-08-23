@@ -49,7 +49,8 @@ export const useVideo = (serviceId: string | null) => {
   const form = useForm({
     defaultValues,
     mode: 'onChange',
-    resolver: yupResolver(videoSchema.add)
+    // @ts-ignore
+resolver: yupResolver(videoSchema.add)
   })
 
   // useEffect(() => {

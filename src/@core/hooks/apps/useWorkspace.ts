@@ -50,7 +50,8 @@ export const useWorkspace = (serviceId: string | null) => {
   const form = useForm({
     defaultValues,
     mode: 'onChange',
-    resolver: yupResolver(workspaceSchema.add)
+    // @ts-ignore
+resolver: yupResolver(workspaceSchema.add)
   })
 
   useEffect(() => {

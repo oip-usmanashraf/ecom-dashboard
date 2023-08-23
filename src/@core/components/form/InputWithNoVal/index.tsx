@@ -8,7 +8,7 @@ import FormHelperText from '@mui/material/FormHelperText'
 // ** form handling lib
 import { useController, UseControllerProps } from 'react-hook-form'
 
-interface IField extends UseControllerProps, BaseTextFieldProps {
+interface IField extends BaseTextFieldProps {
   name: string
   type?: 'text' | 'text-area' | 'number' | 'email' | 'password'
   label?: string

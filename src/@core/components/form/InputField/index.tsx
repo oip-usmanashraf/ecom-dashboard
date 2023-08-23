@@ -8,7 +8,7 @@ import FormHelperText from '@mui/material/FormHelperText'
 // ** form handling lib
 import { useController, UseControllerProps } from 'react-hook-form'
 
-interface IField extends UseControllerProps, BaseTextFieldProps {
+interface IField extends BaseTextFieldProps {
   name: string
   type?: 'text' | 'text-area' | 'number' | 'email' | 'password' | "date"
   label?: string
@@ -41,15 +41,11 @@ const Field = ({ control, ...props }: IField) => {
         aria-describedby={`validation-schema-${name}`}
         multiline={props.type === 'text-area' ? true : false}
         fullWidth
+        helperText={error && error?.message && error.message}
 
       // rows={props.rows}
       // InputProps={props.InputProps}
       />
-      {error && (
-        <FormHelperText sx={{ color: 'error.main' }} id={`validation-schema-${name}`}>
-          {error.message}
-        </FormHelperText>
-      )}
     </FormControl>
   )
 }

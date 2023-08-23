@@ -82,6 +82,15 @@ const Button = (theme: Theme) => {
             lineHeight: 1.6,
             padding: `${theme.spacing(2, 6.25)}`
           }
+        },
+        gradient: {
+          background: 'linear-gradient(135deg, #2862AD 0%, #3D1D91 46.88%, #AE20CA 100%)',
+          border: '#636363',
+          marginBottom: '10px',
+          color: '#fff',
+          paddingLeft: '35px',
+          paddingRight: '35px',
+          textTransform: 'capitalize'
         }
       }
     },

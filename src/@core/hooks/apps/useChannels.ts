@@ -54,6 +54,7 @@ export const useChannels = (serviceId: string | null) => {
   const form = useForm({
     defaultValues,
     mode: 'onChange',
+    // @ts-ignore
     resolver: yupResolver(channelSchema.add)
   })
 

@@ -44,7 +44,8 @@ export const useReview = (serviceId: string | null) => {
   const form = useForm({
     defaultValues,
     mode: 'onChange',
-    resolver: yupResolver(reviewSchema.add)
+    // @ts-ignore
+resolver: yupResolver(reviewSchema.add)
   })
 
   useEffect(() => {

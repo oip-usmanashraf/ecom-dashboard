@@ -60,8 +60,11 @@ export const useTeacher = (serviceId: string | null) => {
   const form = useForm({
     defaultValues,
     mode: 'onChange',
+    // @ts-ignore
     resolver: yupResolver(schema.add)
+    // @ts-ignore
     // resolver: serviceId ? yupResolver(schema.updateEmployee) : yupResolver(schema.addEmployee),
+    // @ts-ignore
     // resolver: yupResolver(serviceId ? schema.updateEmployee : schema.addEmployee)
   })
 

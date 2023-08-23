@@ -37,7 +37,8 @@ export const usePayment = (serviceId: string | null) => {
   const form = useForm({
     defaultValues,
     mode: 'onChange',
-    resolver: yupResolver(paymentSchema.add)
+    // @ts-ignore
+resolver: yupResolver(paymentSchema.add)
   })
 
   useEffect(() => {
