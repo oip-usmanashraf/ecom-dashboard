@@ -24,7 +24,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import RssFeed from '@mui/icons-material/RssFeed'
 import WhatsAppIcon from '@mui/icons-material/WhatsApp'
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows'
-import DashboardIcon from '@mui/icons-material/Dashboard';
+import DashboardIcon from '@mui/icons-material/Dashboard'
 
 // ** Type import
 import { VerticalNavItemsType } from 'src/@core/layouts/types'
@@ -34,18 +34,7 @@ import { useAuth } from 'src/hooks/useAuth'
 
 const navigation = (): VerticalNavItemsType => {
   const ability = useContext(AbilityContext)
-
   return [
-    // {
-    //   sectionTitle: 'Application Modules'
-    // },
-    {
-      title: 'Dashboard',
-      icon: DashboardIcon,
-      path: '/dashboard',
-      action: 'itsHaveAccess',
-      subject: 'dashboard-page'
-    },
     {
       title: 'Channels',
       icon: TelevisionIcon,
@@ -54,151 +43,177 @@ const navigation = (): VerticalNavItemsType => {
       subject: 'channels-page'
     },
     {
-      title: 'Upload Videos',
-      icon: UploadIcon,
-      path: '/videos',
-      action: 'itsHaveAccess',
-      subject: 'videos-page'
-    },
-    {
-      title: 'Liked Videos',
-      icon: ThumbUpIcon,
-      path: '/like-videos',
-      action: 'itsHaveAccess',
-      subject: 'like-videos-page'
-    },
-    {
-      title: 'Saved Videos',
-      icon: SaveIcon,
-      path: '/save-videos',
-      action: 'itsHaveAccess',
-      subject: 'saved-videos-page'
-    },
-    {
-      title: 'Go Live',
-      icon: LiveTvIcon,
-      path: '/live',
-      action: 'itsHaveAccess',
-      subject: 'go-live-page'
-    },
-    {
-      title: 'Chat',
-      icon: WhatsAppIcon,
-      path: '/chat',
-      action: 'itsHaveAccess',
-      subject: 'chat-page'
-    },
-    {
-      title: 'Calendar',
-      icon: CalendarMonthIcon,
-      path: '/calendar',
-      action: 'itsHaveAccess',
-      subject: 'calendar-page'
-    },
-    {
       title: 'Community',
       icon: RssFeed,
       path: '/community-portal',
       action: 'itsHaveAccess',
       subject: 'community-page'
-    },
-    {
-      title: 'Market Data',
-      icon: CompareArrowsIcon,
-      path: '/market-data',
-      action: 'itsHaveAccess',
-      subject: 'market-page'
-    },
-    ...(ability?.can("itsHaveAccess", 'teachers-page') ? [
-      {
-        title: 'Teachers',
-        icon: AccessibilityIcon,
-        action: 'itsHaveAccess',
-        subject: 'teachers-page',
-        children: [
-          {
-            title: 'Teachers',
-            icon: AccessibilityIcon,
-            path: '/teachers',
-            action: 'itsHaveAccess',
-            subject: 'teachers-page',
-          },
-          {
-            title: 'Teacher Details',
-            icon: AccessibilityIcon,
-            path: '/teachers/teacher-details',
-            action: 'itsHaveAccess',
-            subject: 'teachers-page',
-          },
-          {
-            title: 'Teachers Payments',
-            icon: AccessibilityIcon,
-            path: '/teachers/teachers-payments',
-            action: 'itsHaveAccess',
-            subject: 'teachers-payments-page',
-          },
-        ],
-      },
-    ] : [])
-    // {
-    //   title: 'Teachers',
-    //   icon: AccessibilityIcon,
-    //   action: 'itsHaveAccess',
-    //   subject: 'teachers-page',
-    //   children: [
-    //     {
-    //       title: 'Teachers',
-    //       icon: AccessibilityIcon,
-    //       path: '/teachers',
-    //       action: 'itsHaveAccess',
-    //       subject: 'teachers-page'
-    //     },
-    //     {
-    //       title: 'Teacher Details',
-    //       icon: AccessibilityIcon,
-    //       path: '/teachers/teacher-details',
-    //       action: 'itsHaveAccess',
-    //       subject: 'teachers-page'
-    //     },
-    //     {
-    //       title: 'Teachers Payments',
-    //       icon: AccessibilityIcon,
-    //       path: '/teachers/teachers-payments',
-    //       action: 'itsHaveAccess',
-    //       subject: 'teachers-payments-page'
-    //     }
-    //   ]
-    // }
-    ,
-    {
-      title: 'Students',
-      icon: AccessibilityIcon,
-      path: '/students',
-      action: 'itsHaveAccess',
-      subject: 'students-page'
-    },
-    {
-      title: 'Payment',
-      icon: ShoppingCartIcon,
-      path: '/payment',
-      action: 'itsHaveAccess',
-      subject: 'payment-page'
-    },
-    {
-      title: 'Invite Friends',
-      icon: PaymentIcon,
-      path: '/invite-friends',
-      action: 'itsHaveAccess',
-      subject: 'invite-friends-page'
-    },
-    {
-      title: 'Points',
-      icon: MonetizationOnIcon,
-      path: '/points',
-      action: 'itsHaveAccess',
-      subject: 'points-page'
     }
   ]
+  // return [
+  //   // {
+  //   //   sectionTitle: 'Application Modules'
+  //   // },
+  //   // {
+  //   //   title: 'Dashboard',
+  //   //   icon: DashboardIcon,
+  //   //   path: '/dashboard',
+  //   //   action: 'itsHaveAccess',
+  //   //   subject: 'dashboard-page'
+  //   // },
+  //   {
+  //     title: 'Channels',
+  //     icon: TelevisionIcon,
+  //     path: '/channels',
+  //     action: 'itsHaveAccess',
+  //     subject: 'channels-page'
+  //   },
+  //   // {
+  //   //   title: 'Upload Videos',
+  //   //   icon: UploadIcon,
+  //   //   path: '/videos',
+  //   //   action: 'itsHaveAccess',
+  //   //   subject: 'videos-page'
+  //   // },
+  //   // {
+  //   //   title: 'Liked Videos',
+  //   //   icon: ThumbUpIcon,
+  //   //   path: '/like-videos',
+  //   //   action: 'itsHaveAccess',
+  //   //   subject: 'like-videos-page'
+  //   // },
+  //   // {
+  //   //   title: 'Saved Videos',
+  //   //   icon: SaveIcon,
+  //   //   path: '/save-videos',
+  //   //   action: 'itsHaveAccess',
+  //   //   subject: 'saved-videos-page'
+  //   // },
+  //   // {
+  //   //   title: 'Go Live',
+  //   //   icon: LiveTvIcon,
+  //   //   path: '/live',
+  //   //   action: 'itsHaveAccess',
+  //   //   subject: 'go-live-page'
+  //   // },
+  //   // {
+  //   //   title: 'Chat',
+  //   //   icon: WhatsAppIcon,
+  //   //   path: '/chat',
+  //   //   action: 'itsHaveAccess',
+  //   //   subject: 'chat-page'
+  //   // },
+  //   // {
+  //   //   title: 'Calendar',
+  //   //   icon: CalendarMonthIcon,
+  //   //   path: '/calendar',
+  //   //   action: 'itsHaveAccess',
+  //   //   subject: 'calendar-page'
+  //   // },
+  //   {
+  //     title: 'Community',
+  //     icon: RssFeed,
+  //     path: '/community-portal',
+  //     action: 'itsHaveAccess',
+  //     subject: 'community-page'
+  //   },
+  //   // {
+  //   //   title: 'Market Data',
+  //   //   icon: CompareArrowsIcon,
+  //   //   path: '/market-data',
+  //   //   action: 'itsHaveAccess',
+  //   //   subject: 'market-page'
+  //   // },
+  //   // ...(ability?.can("itsHaveAccess", 'teachers-page') ? [
+  //   //   {
+  //   //     title: 'Teachers',
+  //   //     icon: AccessibilityIcon,
+  //   //     action: 'itsHaveAccess',
+  //   //     subject: 'teachers-page',
+  //   //     children: [
+  //   //       {
+  //   //         title: 'Teachers',
+  //   //         icon: AccessibilityIcon,
+  //   //         path: '/teachers',
+  //   //         action: 'itsHaveAccess',
+  //   //         subject: 'teachers-page',
+  //   //       },
+  //   //       {
+  //   //         title: 'Teacher Details',
+  //   //         icon: AccessibilityIcon,
+  //   //         path: '/teachers/teacher-details',
+  //   //         action: 'itsHaveAccess',
+  //   //         subject: 'teachers-page',
+  //   //       },
+  //   //       {
+  //   //         title: 'Teachers Payments',
+  //   //         icon: AccessibilityIcon,
+  //   //         path: '/teachers/teachers-payments',
+  //   //         action: 'itsHaveAccess',
+  //   //         subject: 'teachers-payments-page',
+  //   //       },
+  //   //     ],
+  //   //   },
+  //   // ] : [])
+  //   // {
+  //   //   title: 'Teachers',
+  //   //   icon: AccessibilityIcon,
+  //   //   action: 'itsHaveAccess',
+  //   //   subject: 'teachers-page',
+  //   //   children: [
+  //   //     {
+  //   //       title: 'Teachers',
+  //   //       icon: AccessibilityIcon,
+  //   //       path: '/teachers',
+  //   //       action: 'itsHaveAccess',
+  //   //       subject: 'teachers-page'
+  //   //     },
+  //   //     {
+  //   //       title: 'Teacher Details',
+  //   //       icon: AccessibilityIcon,
+  //   //       path: '/teachers/teacher-details',
+  //   //       action: 'itsHaveAccess',
+  //   //       subject: 'teachers-page'
+  //   //     },
+  //   //     {
+  //   //       title: 'Teachers Payments',
+  //   //       icon: AccessibilityIcon,
+  //   //       path: '/teachers/teachers-payments',
+  //   //       action: 'itsHaveAccess',
+  //   //       subject: 'teachers-payments-page'
+  //   //     }
+  //   //   ]
+  //   // }
+  //   ,
+  //   // {
+  //   //   title: 'Students',
+  //   //   icon: AccessibilityIcon,
+  //   //   path: '/students',
+  //   //   action: 'itsHaveAccess',
+  //   //   subject: 'students-page'
+  //   // },
+  //   // {
+  //   //   title: 'Payment',
+  //   //   icon: ShoppingCartIcon,
+  //   //   path: '/payment',
+  //   //   action: 'itsHaveAccess',
+  //   //   subject: 'payment-page'
+  //   // },
+  //   // {
+  //   //   title: 'Invite Friends',
+  //   //   icon: PaymentIcon,
+  //   //   path: '/invite-friends',
+  //   //   action: 'itsHaveAccess',
+  //   //   subject: 'invite-friends-page'
+  //   // },
+  //   // {
+  //   //   title: 'Points',
+  //   //   icon: MonetizationOnIcon,
+  //   //   path: '/points',
+  //   //   action: 'itsHaveAccess',
+  //   //   subject: 'points-page'
+  //   // }
+  // ]
 }
 
 export default navigation
