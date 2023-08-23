@@ -3,7 +3,7 @@ import { useEffect, useMemo } from 'react'
 // ** Third Party Imports
 import toast from 'react-hot-toast'
 import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 // import csvDownload from 'json-to-csv-export'
 
 // ** Store Imports
@@ -60,8 +60,11 @@ export const useTeacher = (serviceId: string | null) => {
   const form = useForm({
     defaultValues,
     mode: 'onChange',
+    // @ts-ignore
     resolver: yupResolver(schema.add)
+    // @ts-ignore
     // resolver: serviceId ? yupResolver(schema.updateEmployee) : yupResolver(schema.addEmployee),
+    // @ts-ignore
     // resolver: yupResolver(serviceId ? schema.updateEmployee : schema.addEmployee)
   })
 

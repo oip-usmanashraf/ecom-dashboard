@@ -100,7 +100,8 @@ const Signup = () => {
   } = useForm({
     defaultValues,
     mode: 'onBlur',
-    resolver: yupResolver(schema)
+    // @ts-ignore
+resolver: yupResolver(schema)
   })
   const onSubmit = (data: RegisterParams) => {
     // console.log(data);
@@ -121,6 +122,7 @@ const Signup = () => {
         </Grid>
         <Grid item md={6} xs={12}>
           <Box sx={{ mb: 5 }}>
+            {/* @ts-ignore */}
             <form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
               <Grid container>
                 <Grid item md={6} xs={12}>

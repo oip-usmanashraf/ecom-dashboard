@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 
 // ** Third Party Imports
 import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // ** Store Imports
 import { useDispatch, useSelector } from 'react-redux'
@@ -44,7 +44,8 @@ export const usePlaylist = (serviceId: string | null) => {
   const form = useForm({
     defaultValues,
     mode: 'onChange',
-    resolver: yupResolver(playListSchema.add)
+    // @ts-ignore
+resolver: yupResolver(playListSchema.add)
   })
 
   useEffect(() => {

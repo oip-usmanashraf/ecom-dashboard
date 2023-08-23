@@ -3,7 +3,7 @@ import { useEffect, useMemo } from 'react'
 // ** Third Party Imports
 import toast from 'react-hot-toast'
 import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 // import csvDownload from 'json-to-csv-export'
 
 // ** Store Imports
@@ -39,7 +39,8 @@ export const useVideo = (serviceId: string | null) => {
   const form = useForm({
     defaultValues,
     mode: 'onChange',
-    resolver: yupResolver(schema.add)
+    // @ts-ignore
+resolver: yupResolver(schema.add)
   })
 
   useEffect(() => {

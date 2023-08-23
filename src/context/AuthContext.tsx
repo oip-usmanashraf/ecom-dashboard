@@ -121,7 +121,7 @@ const AuthProvider = ({ children }: Props) => {
           refreshToken: response.data.tokens.refreshToken || '',
           user: response.data.user
         })
-        router.push('/channels')
+        router.push('/community-portal')
         setStatus('success')
       })
       .catch(error => {
@@ -187,7 +187,7 @@ const AuthProvider = ({ children }: Props) => {
 
       window.localStorage.setItem(authConfig.storageTokenKeyName, data.data.tokens.accessToken)
 
-      router.push('/channels')
+      router.push('/community-portal')
       setStatus('success')
       handleNext()
     } catch (error: any) {

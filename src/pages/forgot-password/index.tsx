@@ -117,7 +117,8 @@ const ForgotPassword = () => {
   } = useForm({
     defaultValues,
     mode: 'onBlur',
-    resolver: yupResolver(schema)
+    // @ts-ignore
+resolver: yupResolver(schema)
   })
 
   // ** Vars
@@ -269,6 +270,7 @@ const ForgotPassword = () => {
                   />
                 )}
               />
+              {/* @ts-ignore */}
               {errors.email && <FormHelperText sx={{ color: 'error.main' }}>{errors.email.message}</FormHelperText>}
               <Button fullWidth size='large' type='submit' variant='contained' sx={{ mb: 5.25 }}>
                 Send reset link

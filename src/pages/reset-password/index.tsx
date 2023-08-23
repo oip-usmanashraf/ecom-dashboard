@@ -30,7 +30,7 @@ import { Controller, useForm } from 'react-hook-form'
 
 // ** Third Party Imports
 import * as yup from 'yup'
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // ** Types
 import { ResetPasswordParams } from 'src/context/types'
@@ -57,7 +57,8 @@ const Page = () => {
   const { control, handleSubmit } = useForm({
     defaultValues: { password: '', confirm_password: '' },
     mode: 'onChange',
-    resolver: yupResolver(schema.resetPassword)
+    // @ts-ignore
+resolver: yupResolver(schema.resetPassword)
   })
 
   // ** vars

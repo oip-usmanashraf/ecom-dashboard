@@ -5,7 +5,7 @@ import { Checkbox, BaseTextFieldProps } from '@mui/material'
 // ** form handling lib
 import { UseControllerProps } from 'react-hook-form'
 
-interface ICheckBox extends UseControllerProps, BaseTextFieldProps {
+interface ICheckBox extends BaseTextFieldProps {
   name: string
   control: UseControllerProps['control'] | any
 }

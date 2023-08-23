@@ -77,21 +77,16 @@ const CommunityHeader = () => {
             setFiles={setFiles}
           />
         </Grid>
-        <Box display={'flex'} marginTop={10}>
+        <Box display={'flex'} justifyContent="flex-end" marginTop={10} padding={2}>
           <LoadingButton
             disabled={store.status === 'pending'}
             loading={store.status === 'pending'}
             type='submit'
-            style={{
-              marginLeft: 'auto',
-              border: '#636363',
-              marginBottom: '10px'
-            }}
             aria-label='Share'
-            variant='outlined'
-            startIcon={<SendIcon />}
+            //@ts-ignore
+            variant='gradient'
           >
-            Post
+            Share
           </LoadingButton>
         </Box>
       </Card>

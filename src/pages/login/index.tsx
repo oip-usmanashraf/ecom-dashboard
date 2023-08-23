@@ -142,6 +142,7 @@ const LoginPage = () => {
   } = useForm({
     defaultValues,
     mode: 'onBlur',
+    // @ts-ignore
     resolver: yupResolver(schema)
   })
 
@@ -182,6 +183,7 @@ const LoginPage = () => {
                   />
                 )}
               />
+              {/* @ts-ignore */}
               {errors.email && <FormHelperText sx={{ color: 'error.main' }}>{errors.email.message}</FormHelperText>}
             </FormControl>
             <FormControl fullWidth>
@@ -246,7 +248,7 @@ const LoginPage = () => {
               variant='outlined'
               type='submit'
             >
-              {auth.status === 'pending' ? 'Logging In' : 'Logins'}
+              {auth.status === 'pending' ? 'Logging In' : 'Login'}
             </LoadingButton>
 
             <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>

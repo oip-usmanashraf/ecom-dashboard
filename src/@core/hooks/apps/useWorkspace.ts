@@ -2,7 +2,7 @@ import { useEffect, useMemo } from 'react'
 
 // ** Third Party Imports
 import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // ** Store Imports
 import { useDispatch, useSelector } from 'react-redux'
@@ -50,7 +50,8 @@ export const useWorkspace = (serviceId: string | null) => {
   const form = useForm({
     defaultValues,
     mode: 'onChange',
-    resolver: yupResolver(workspaceSchema.add)
+    // @ts-ignore
+resolver: yupResolver(workspaceSchema.add)
   })
 
   useEffect(() => {

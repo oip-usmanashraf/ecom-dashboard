@@ -28,7 +28,7 @@ export const useFeedComments = (serviceId: string | null) => {
   const dispatch = useDispatch<AppDispatch>()
   const form = useForm()
 
-  const [comments, setComments] = useState<any[]>([])
+  const [comments, setComments] = useState<any[] | null>(null)
   const [type, setType] = useState<'ADD' | 'UPDATE'>('ADD')
 
   useEffect(() => {
@@ -60,9 +60,11 @@ export const useFeedComments = (serviceId: string | null) => {
   const deleteComment = async (id: string) => {
     const { data } = await communityFeedService.deleteComments(id)
     if (data?.statusCode === '10000') {
-      const updatedComments = [...comments]
-      const updatedData = updatedComments?.filter((item: any) => item?.id != data?.data?.id)
-      setComments(updatedData)
+      if(Array.isArray(comments)){
+        const updatedComments = [...comments]
+        const updatedData = updatedComments?.filter((item: any) => item?.id != data?.data?.id)
+        setComments(updatedData)
+      }
       handleModal(null)
     }
   }
