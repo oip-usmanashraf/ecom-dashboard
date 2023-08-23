@@ -57,7 +57,8 @@ const Page = () => {
   const { control, handleSubmit } = useForm({
     defaultValues: { password: '', confirm_password: '' },
     mode: 'onChange',
-    resolver: yupResolver(schema.resetPassword)
+    // @ts-ignore
+resolver: yupResolver(schema.resetPassword)
   })
 
   // ** vars

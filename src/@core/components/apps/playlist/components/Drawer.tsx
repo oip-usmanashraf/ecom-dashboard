@@ -45,6 +45,17 @@ const Footer = styled(Box)<BoxProps>(({ theme }) => ({
   marginTop: '49%'
 }))
 
+const RenderClient = (props: any) => {
+  if (props?.errors?.thumnail_url?.message) {
+    return (
+      <Typography mt={2} fontWeight={'400'} color={'#FF4D49'} fontSize={'0.75rem'}>
+        {props?.errors?.thumnail_url?.message}
+      </Typography>
+    )
+  }
+  return null
+}
+
 const CategoryDrawer = (props: SidebarAddUserType) => {
   // ** Props
   const { open, toggle, serviceId } = props
@@ -133,11 +144,7 @@ const CategoryDrawer = (props: SidebarAddUserType) => {
                 minSize={1}
                 control={control}
               />
-              {errors?.thumbnail && (
-                <Typography mt={2} fontWeight={'400'} color={'#FF4D49'} fontSize={'0.75rem'}>
-                  {errors?.thumbnail?.message}
-                </Typography>
-              )}
+              <RenderClient errors={errors} />
             </Grid>
           </Grid>
         </Box>

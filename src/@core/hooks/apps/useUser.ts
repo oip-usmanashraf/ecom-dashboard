@@ -34,7 +34,8 @@ export const useUser = (serviceId: string | null) => {
   const form = useForm({
     defaultValues,
     mode: 'onChange',
-    resolver: yupResolver(userSchema.profile)
+    // @ts-ignore
+resolver: yupResolver(userSchema.profile)
   })
 
   // ** Hook

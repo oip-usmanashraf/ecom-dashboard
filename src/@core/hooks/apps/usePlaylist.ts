@@ -44,7 +44,8 @@ export const usePlaylist = (serviceId: string | null) => {
   const form = useForm({
     defaultValues,
     mode: 'onChange',
-    resolver: yupResolver(playListSchema.add)
+    // @ts-ignore
+resolver: yupResolver(playListSchema.add)
   })
 
   useEffect(() => {

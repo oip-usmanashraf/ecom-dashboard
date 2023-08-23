@@ -42,7 +42,8 @@ export const useCourses = (serviceId: string | null) => {
   const form = useForm({
     defaultValues,
     mode: 'onChange',
-    resolver: yupResolver(coursesSchema.add),
+    // @ts-ignore
+resolver: yupResolver(coursesSchema.add),
     // shouldUnregister: true
   })
 

@@ -34,8 +34,9 @@ export const useReplies = (serviceId: string | null) => {
 
   const form = useForm({
     defaultValues,
-    mode: 'onChange'
-    // resolver: yupResolver(studentSchema.add)
+    mode: 'onChange',
+    // @ts-ignore
+    resolver: yupResolver(studentSchema.add)
   })
 
   // useEffect(() => {
