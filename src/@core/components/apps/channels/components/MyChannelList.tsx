@@ -17,7 +17,7 @@ interface CellType {
 }
 
 // ** renders client column
-export const renderClient = (row: IChannels) => {
+export const RenderClient = (row: IChannels) => {
   if (row && row.thumnail_url) {
     return (
       <AvatarWithImageLink href={`/channels/${row.id}`}>
@@ -41,7 +41,6 @@ export const renderClient = (row: IChannels) => {
 
 const MyChannelList = () => {
   const auth = useAuth()
-
   const { status, data, error, execute } = useAsync(ChannelService.getByUser)
 
   const switchChannel = (id: number) => {
@@ -55,7 +54,7 @@ const MyChannelList = () => {
           noWrap
           component='a'
           variant='subtitle2'
-          sx={{ color: 'text.primary', textDecoration: 'none', margin: 'auto', marginTop: 2 }}
+          sx={{ color: 'text.primary', textDecoration: 'none', marginLeft: '15px', fontWeight: 900, marginTop: 2 }}
         >
           Switch Channel
         </Typography>
@@ -63,32 +62,50 @@ const MyChannelList = () => {
       {status === 'pending' ? (
         <Skeleton variant='rounded' width={'100%'} height={'5vh'} />
       ) : (
-        data?.data?.entities?.map((item: any) => (
-          <>
-            {/* <Link href={`/channels/${item?.id}`}> */}
+        data?.data?.entities?.map((item: any) => {
+          const isActiveChannel = item.id === auth?.user?.activeChannel?.channel?.id
+          return (
             <Box
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                flexDirection: 'row',
-                cursor: 'pointer',
-                margin: 2,
-                background: 'linear-gradient(140.58deg, #363636 -21.35%, #2D2D2D 101.65%)'
-              }}
+              key={item.id}
+              sx={
+                isActiveChannel
+                  ? {
+                      display: 'flex',
+                      alignItems: 'center',
+                      flexDirection: 'row',
+                      cursor: 'pointer',
+                      marginY: 1,
+                      paddingY: 2,
+                      width: '100%',
+                      paddingX: 1,
+                      background: 'linear-gradient(136deg, rgba(40, 98, 173, 0) 0%, #ae20ca3d 100%)',
+                      border: '1px solid #fa00ff4a'
+                    }
+                  : {
+                      display: 'flex',
+                      alignItems: 'center',
+                      flexDirection: 'row',
+                      cursor: 'pointer',
+                      marginY: 1,
+                      paddingY: 2,
+                      width: '100%',
+                      paddingX: 1
+                    }
+              }
               onClick={() => switchChannel(item?.id)}
             >
-              {renderClient(item)}
+              {RenderClient(item)}
               <Typography
                 noWrap
                 component='a'
-                variant='subtitle2'
-                sx={{ color: 'text.primary', textDecoration: 'none' }}
+                variant={isActiveChannel ? 'body1' : 'subtitle2'}
+                sx={{ color: 'text.primary', textDecoration: 'none', fontWeight: isActiveChannel ? 900 : 500 }}
               >
                 {textOverflow(item?.name, 15)}
               </Typography>
             </Box>
-          </>
-        ))
+          )
+        })
       )}
     </>
   )
