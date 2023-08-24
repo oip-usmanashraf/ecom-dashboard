@@ -7,12 +7,12 @@ import { Skin } from 'src/@core/layouts/types'
 // ** Util Import
 import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
 
+
 const Dialog = (theme: Theme, skin: Skin) => {
   return {
     MuiDialog: {
       styleOverrides: {
         paper: {
-          boxShadow: theme.shadows[skin === 'bordered' ? 0 : 10],
           ...(skin === 'bordered' && { border: `1px solid ${theme.palette.divider}` }),
           '&:not(.MuiDialog-paperFullScreen)': {
             '@media (max-width:599px)': {
@@ -24,7 +24,11 @@ const Dialog = (theme: Theme, skin: Skin) => {
           '& > .MuiList-root': {
             paddingLeft: theme.spacing(1),
             paddingRight: theme.spacing(1)
-          }
+          },
+          borderRadius: '15px',
+          background: 'linear-gradient(314deg, #101010 3.30%, rgba(20, 20, 20, 0.26) 100%) !important',
+          boxShadow: '0px 4px 104px 0px rgba(158, 0, 255, 0.15) inset',
+          backdropFilter: 'blur(100px)', 
         }
       }
     },

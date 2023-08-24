@@ -28,6 +28,14 @@ const DeleteAlert = ({
             onClose={handleClose}
             aria-labelledby='alert-dialog-title'
             aria-describedby='alert-dialog-description'
+            PaperProps={{
+                sx:{
+                  borderRadius: '15px',
+                  background: 'linear-gradient(314deg, #101010 3.30%, rgba(20, 20, 20, 0.26) 100%) !important',
+                  boxShadow: '0px 4px 104px 0px rgba(158, 0, 255, 0.15) inset',
+                  backdropFilter: 'blur(100px)', 
+                }
+              }}
         >
             <DialogTitle id='alert-dialog-title'>Are you sure want to delete this {title}?</DialogTitle>
             <DialogContent>

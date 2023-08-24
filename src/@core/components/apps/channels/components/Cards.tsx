@@ -150,7 +150,7 @@ export default function Cards() {
           store?.entities?.map(cards => {
             return (
               <Grid item xs={12} md={3} sm={6}>
-                <Item
+                {/* <Item
                   sx={{
                     maxWidth: '100%',
                     float: 'none',
@@ -158,7 +158,7 @@ export default function Cards() {
                     mb: 2,
                     position: 'relative'
                   }}
-                >
+                > */}
                   <Card>
                     {cards?.thumnail_url === '' || cards?.thumnail_url === undefined || cards?.thumnail_url === null ? (
                       <Image
@@ -219,7 +219,7 @@ export default function Cards() {
                       </LoadingButton>
                     </CardContent>
                   </Card>
-                </Item>
+                {/* </Item> */}
               </Grid>
             )
           })

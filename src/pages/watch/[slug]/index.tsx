@@ -15,6 +15,8 @@ import {
 } from '@mui/material'
 import { useVideo } from 'src/@core/hooks/apps/useVideo'
 import ThumbUp from '@mui/icons-material/ThumbUp'
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt'
+
 import { Share } from 'mdi-material-ui'
 import SaveIcon from '@mui/icons-material/Save'
 import CheckIcon from '@mui/icons-material/Check'
@@ -349,7 +351,7 @@ const Page = () => {
                   </Box>
                 </Grid>
                 <Grid md={6} xs={12} sm={12}>
-                  <Box display={'flex'} marginLeft={'auto'} flexWrap={'wrap'}>
+                  <Box display={'flex'} marginLeft={'auto'} flexWrap={'wrap'} gap={2.5}>
                     {/* @ts-ignore */}
                     {/* {(ability.can('itsHaveAccess', 'START_STREAMING_BUTTON') && store?.entity?.channelId === user.activeChannel?.channel.id) ? (
                         <LoadingButton
@@ -403,23 +405,9 @@ const Page = () => {
                       // loading={store.status === 'pending'}
                       // disabled={store.status === 'pending'}
                       loadingPosition='end'
-                      style={{
-                        background: '#636363',
-                        border: '#636363',
-                        borderRadius: '90px',
-                        marginRight: '20px',
-                        marginBottom: '10px',
-                        width: '150px'
-                      }}
-                      sx={
-                        store?.entity?.isLiked
-                          ? { background: 'linear-gradient(135deg, #2862AD 0%, #3D1D91 46.88%, #AE20CA 100%)', color: 'black' }
-                          : { color: '#fff', background: 'white' }
-                      }
                       aria-label='Like'
-                      variant='outlined'
-                      startIcon={<ThumbUp style={{ backgroundColor: 'transparent' }} />}
-                      //  @ts-ignore
+                      variant={store?.entity?.isSaved ? 'contained' : 'outlined'}
+                      startIcon={store?.entity?.isLiked ? <ThumbUp /> : <ThumbUpOffAltIcon />}
                       onClick={() => getLikedByVideoId(store?.entity && 'id' in store?.entity && store?.entity?.id)}
                     >
                       {store?.entity && 'isLiked' in store?.entity && (store?.entity?.isLiked ? 'Liked' : 'Like')}
@@ -428,41 +416,13 @@ const Page = () => {
                         {store?.entity && 'likes_count' in store?.entity && store?.entity?.likes_count}
                       </Box>
                     </LoadingButton>
-                    <Button
-                      style={{
-                        marginRight: '20px',
-                        background: '#636363',
-                        color: '#fff',
-                        border: '#636363',
-                        borderRadius: '90px',
-                        marginBottom: '10px',
-                        width: '150px'
-                      }}
-                      aria-label='Share'
-                      variant='outlined'
-                      startIcon={<Share />}
-                      onClick={handleDelete}
-                    >
+                    <Button aria-label='Share' startIcon={<Share />} onClick={handleDelete}>
                       Share
                     </Button>
                     <LoadingButton
-                      // loading={store.status === 'pending'}
-                      // disabled={store.status === 'pending'}
                       loadingPosition='end'
-                      style={{
-                        background: '#636363',
-                        border: '#636363',
-                        borderRadius: '90px',
-                        marginBottom: '10px',
-                        width: '150px'
-                      }}
-                      sx={
-                        store?.entity?.isSaved
-                          ? { background: 'linear-gradient(135deg, #2862AD 0%, #3D1D91 46.88%, #AE20CA 100%)', color: 'black' }
-                          : { color: '#fff', background: 'white' }
-                      }
-                      aria-label='Save'
-                      variant='outlined'
+                      aria-label={store?.entity?.isSaved ? 'Saved' : 'Save'}
+                      variant={store?.entity?.isSaved ? 'contained' : 'outlined'}
                       startIcon={<SaveIcon style={{ backgroundColor: 'transparent' }} />}
                       onClick={() => onSave(store?.entity?.id)}
                     >

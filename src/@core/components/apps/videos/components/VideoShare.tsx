@@ -3,7 +3,7 @@ import Dialog from '@mui/material/Dialog'
 
 // ** Import Custom hooks
 import useToggleDrawer from 'src/@core/hooks/useToggleDrawer'
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, Card } from '@mui/material'
 import { EmailShareButton, LinkedinShareButton, WhatsappShareButton } from 'react-share'
 import Image from 'next/image'
 import { useVideo } from 'src/@core/hooks/apps/useVideo'
@@ -20,6 +20,14 @@ const Page = ({ title = 'records', onAgree }: { title?: string; onAgree: () => v
       onClose={handleClose}
       aria-labelledby='alert-dialog-title'
       aria-describedby='alert-dialog-description'
+      PaperProps={{
+        sx:{
+          borderRadius: '15px',
+          background: 'linear-gradient(314deg, #101010 3.30%, rgba(20, 20, 20, 0.26) 100%) !important',
+          boxShadow: '0px 4px 104px 0px rgba(158, 0, 255, 0.15) inset',
+          backdropFilter: 'blur(100px)', 
+        }
+      }}
 
     >
       <Typography textAlign={'center'} padding={10}>

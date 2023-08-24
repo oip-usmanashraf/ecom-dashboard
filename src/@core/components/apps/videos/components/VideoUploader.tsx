@@ -193,7 +193,7 @@ const VideoUploader = ({
             <Fragment>
               <List>{fileList}</List>
               <div className='buttons'>
-                <Button color='error' variant='outlined' onClick={handleRemoveAllFiles}>
+                <Button color='error' variant="outlined" onClick={handleRemoveAllFiles}>
                   Remove All
                 </Button>
                 <LoadingButton
@@ -201,13 +201,8 @@ const VideoUploader = ({
                   disabled={status === 'pending'}
                   loadingPosition='end'
                   size='large'
-                  variant='contained'
                   type='button'
                   onClick={handleUpload}
-                  sx={{
-                    bgcolor: '#B4772C',
-                    color: 'white'
-                  }}
                 >
                   Upload Files
                 </LoadingButton>

@@ -156,7 +156,7 @@ const VideoCard = ({ video }: IFile) => {
           }
         </ThumbnailBox>
       </Link>
-      <CardContent sx={{ background: 'linear-gradient(135.45deg, #726E6E 11.55%, #000000 101.52%)' }}>
+      <CardContent>
         <Grid container>
           <Grid item xs={10}>
             <Link href={`/watch/${video?.id}`}>

@@ -15,6 +15,13 @@ const Button = (theme: Theme) => {
           fontWeight: 500,
           borderRadius: 8,
           lineHeight: 1.715,
+          background: 'linear-gradient(135deg, #2862AD 0%, #3D1D91 46.88%, #AE20CA 100%)',
+          border: '#636363',
+          marginBottom: '10px',
+          color: '#fff',
+          paddingLeft: '35px',
+          paddingRight: '35px',
+          textTransform: 'capitalize',
           padding: `${theme.spacing(1.75, 3)}`,
           '&.MuiButton-textPrimary:hover': {
             backgroundColor: hexToRGBA(theme.palette.primary.main, 0.08)
@@ -36,8 +43,11 @@ const Button = (theme: Theme) => {
           }
         },
         contained: {
-          boxShadow: theme.shadows[3],
-          padding: `${theme.spacing(1.75, 5.5)}`
+          color: '#000 !important', background: '#fff !important' 
+        },
+        outlinedError:{
+          background:"#d32f2f",
+          color:"#fff"
         },
         outlined: {
           lineHeight: 1.572,
@@ -61,6 +71,7 @@ const Button = (theme: Theme) => {
             backgroundColor: hexToRGBA(theme.palette.info.main, 0.08)
           }
         },
+
         sizeSmall: {
           lineHeight: 1.693,
           padding: `${theme.spacing(1, 2.25)}`,
@@ -82,15 +93,6 @@ const Button = (theme: Theme) => {
             lineHeight: 1.6,
             padding: `${theme.spacing(2, 6.25)}`
           }
-        },
-        gradient: {
-          background: 'linear-gradient(135deg, #2862AD 0%, #3D1D91 46.88%, #AE20CA 100%)',
-          border: '#636363',
-          marginBottom: '10px',
-          color: '#fff',
-          paddingLeft: '35px',
-          paddingRight: '35px',
-          textTransform: 'capitalize'
         }
       }
     },

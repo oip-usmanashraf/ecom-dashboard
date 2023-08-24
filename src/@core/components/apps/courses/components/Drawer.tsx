@@ -76,8 +76,7 @@ const StudentDrawer = (props: SidebarAddUserType) => {
     toggle()
   }
 
-  return (
-    <Drawer
+  return open ? (<Drawer
       open={open}
       anchor='right'
       variant='temporary'
@@ -107,8 +106,7 @@ const StudentDrawer = (props: SidebarAddUserType) => {
           <Step />
         </form>
       </FormProvider>
-    </Drawer>
-  )
+    </Drawer>) : null
 }
 
 export default StudentDrawer
