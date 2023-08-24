@@ -38,6 +38,7 @@ import MuiButtonGroup from './buttonGroup'
 import MuiAutocomplete from './autocomplete'
 import MuiToggleButton from './toggleButton'
 import MuiDateTimePicker from './dateTimePicker'
+import MuiTextField from "./textfield"
 import MuiDrawer from './drawer'
 import MuiModal from './modal'
 
@@ -74,7 +75,7 @@ const Overrides = (theme: Theme, settings: Settings) => {
   const snackbar = MuiSnackbar(theme, skin)
   const dateTimePicker = MuiDateTimePicker(theme)
   const autocomplete = MuiAutocomplete(theme, skin)
-
+  const textField = MuiTextField(theme)
   return Object.assign(
     fab,
     chip,
@@ -110,7 +111,8 @@ const Overrides = (theme: Theme, settings: Settings) => {
     dateTimePicker,
     MuiBreadcrumbs,
     MuiButtonGroup,
-    MuiToggleButton
+    MuiToggleButton,
+    textField
   )
 }
 

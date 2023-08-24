@@ -43,6 +43,13 @@ const navigation = (): VerticalNavItemsType => {
       subject: 'channels-page'
     },
     {
+      title: 'Upload Videos',
+      icon: UploadIcon,
+      path: '/videos',
+      action: 'itsHaveAccess',
+      subject: 'videos-page'
+    },
+    {
       title: 'Community',
       icon: RssFeed,
       path: '/community-portal',

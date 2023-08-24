@@ -4,6 +4,7 @@ import Box, { BoxProps } from '@mui/material/Box'
 
 // ** Types
 import { BlankLayoutProps } from './types'
+import Image from 'next/image'
 
 // Styled component for Blank Layout component
 const BlankLayoutWrapper = styled(Box)<BoxProps>(({ theme }) => ({
@@ -38,11 +39,16 @@ const BlankLayoutWrapper = styled(Box)<BoxProps>(({ theme }) => ({
 
 const BlankLayout = ({ children }: BlankLayoutProps) => {
   return (
-    <BlankLayoutWrapper className='layout-wrapper'>
-      <Box className='app-content' sx={{ position: 'relative' }}>
-        {children}
+    <>
+      <Box position='absolute' style={{left:"50px" , top:"50px"}} sx={{md:{display:"none"}, sm:{display:"none"} , xs:{display:"none"}}}>
+          <Image src={'/images/ecom-logo.png'} width='135px' height='81px' />
       </Box>
-    </BlankLayoutWrapper>
+      <BlankLayoutWrapper className='layout-wrapper'>
+        <Box className='app-content' sx={{ position: 'relative' }}>
+          {children}
+        </Box>
+      </BlankLayoutWrapper>
+    </>
   )
 }
 

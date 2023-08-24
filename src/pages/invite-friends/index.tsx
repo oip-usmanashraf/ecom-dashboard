@@ -41,8 +41,7 @@ const Page = () => {
             </Box>
             <Box sx={{ width: '50%', margin: 'auto', display: 'flex', paddingBottom: 15, justifyContent: "center" }}>
               <Stack direction='row' spacing={1} display='flex' justifyContent={'center'} >
-                {/* <Chip label={`http://54.145.247.199/signup/?key=${referCode}`} sx={{ padding: 5 }} /> */}
-                <Chip label={`http://128.199.151.93/signup/?key=${referCode}`} sx={{ padding: 5 }} />
+                <Chip label={`http://ecomempire.io/signup/?key=${referCode}`} sx={{ padding: 5 }} />
               </Stack>
               <CopyToClipboard text={code} onCopy={() => copyToClipboard()}>
                 <Button

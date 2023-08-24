@@ -2,15 +2,16 @@ import axios from 'axios'
 
 // ** Config
 import authConfig from 'src/configs/auth'
+import { API_BASE_URL } from 'src/configs/global';
 
-const API_VERSION = 'v1'
-const DEV_URL = `http://128.199.151.93/api/${API_VERSION}`;
-const LOCAL_URL = `http://localhost:8002/api/${API_VERSION}`;
-const PROD_URL = DEV_URL;
+// const API_VERSION = 'v1'
+// const DEV_URL = `http://128.199.151.93/api/${API_VERSION}`;
+// const LOCAL_URL = `http://localhost:8002/api/${API_VERSION}`;
+// const PROD_URL = DEV_URL;
+// const baseURL = DEV_URL;
 
-const baseURL = DEV_URL;
 const instance = axios.create({
-  baseURL,
+  baseURL: API_BASE_URL,
   timeout: 500000,
   headers: {
     Accept: 'application/json',

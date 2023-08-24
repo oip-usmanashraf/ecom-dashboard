@@ -23,7 +23,8 @@ module.exports = withTM({
       'images.unsplash.com',
       'res.cloudinary.com',
       'cdn.dribbble.com',
-      'png.pngtree.com'
+      'png.pngtree.com',
+      "elect-space.sgp1.digitaloceanspaces.com"
     ]
   },
   experimental: {

@@ -4,6 +4,7 @@ import stripeJs from '@stripe/stripe-js'
 import LoadingButton from '@mui/lab/LoadingButton'
 import Typography from '@mui/material/Typography'
 import { AuthContext } from 'src/context/AuthContext'
+import { API_BASE_URL } from 'src/configs/global'
 
 export default function CheckoutForm({ paymentIntent }: { paymentIntent: stripeJs.PaymentIntent }) {
   const { handleNext } = useContext(AuthContext)
@@ -59,7 +60,7 @@ export default function CheckoutForm({ paymentIntent }: { paymentIntent: stripeJ
       confirmParams: {
         // Make sure to change this to your payment completion page
         // return_url: `http://54.145.247.199/api/v1/invoice/payment_intents/confirm/${paymentIntent.id}` // live
-        return_url: `http://128.199.151.93/api/v1/invoice/payment_intents/confirm/${paymentIntent.id}` // new IP
+        return_url: `${API_BASE_URL}/invoice/payment_intents/confirm/${paymentIntent.id}` // new IP
         // return_url: `http://192.168.0.136:8002/api/v1/invoice/payment_intents/confirm/${paymentIntent.id}` // local
       }
     })

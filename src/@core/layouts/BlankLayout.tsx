@@ -27,9 +27,13 @@ const ImageWrapper2 = styled('img')({
 
 const MainWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   position: 'absolute',
-  width: '70%',
+  width: '100%',
+  height: '100%',
   top: '50%',
   left: '50%',
+  display:"flex",
+  flexDirection: 'column',
+  justifyContent: 'center',
   transform: 'translate(-50%, -50%)',
   [theme.breakpoints.down('lg')]: {
     maxWidth: '100%',
@@ -84,14 +88,8 @@ const ModalWrapper = styled(Box)<BoxProps>(({ theme }) => ({
 const GuestLayout = ({ children }: GuestLayoutProps) => {
   return (
     <>
-      <ImageWrapper1 src='../images/background/bottomCystals.png' alt='crstals' />
-      <ImageWrapper2 src='../images/background/topCystals.png' alt='crstals' sx={{ width: '100%', maxWidth: '100%' }} />
       <MainWrapper id='yyyyyyyyyyyy'>
-        <ModalWrapper>
-          <Box>
-            <BoxWrapper>{children}</BoxWrapper>
-          </Box>
-        </ModalWrapper>
+          {children}
       </MainWrapper>
     </>
   )

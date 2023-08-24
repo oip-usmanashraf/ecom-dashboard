@@ -14,7 +14,7 @@ const Page = () => {
   }: any = useAuth()
 
   // const invitationLink = `http://54.145.247.199/signup/?key=${referalCode}`
-  const invitationLink = `http://128.199.151.93/signup/?key=${referalCode}`
+  const invitationLink = `http://ecomempire.io/signup/?key=${referalCode}`
 
   return (
     <>

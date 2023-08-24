@@ -11,6 +11,8 @@ import MuiLink from '@mui/material/Link'
 import LoadingButton from '@mui/lab/LoadingButton'
 import TextField from '@mui/material/TextField'
 import InputLabel from '@mui/material/InputLabel'
+import Card from '@mui/material/Card'
+
 import IconButton from '@mui/material/IconButton'
 import Box, { BoxProps } from '@mui/material/Box'
 import FormControl from '@mui/material/FormControl'
@@ -106,6 +108,18 @@ const LeftWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   }
 }))
 
+const RoundedCard = styled(Card)(() => ({
+  height: '100px',
+  width: '100px',
+  borderRadius: '50%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  position: 'absolute',
+  top: '-50px',
+  zIndex: 5
+}))
+
 const schema = yup.object().shape({
   email: yup.string().email().required(),
   password: yup.string().min(5).required()
@@ -158,217 +172,124 @@ const LoginPage = () => {
   }
 
   return (
-    <>
-      <FlexBox>
-        <LeftWrapper>
-          <Image src={'/images/cards/LoginImage.png'} alt='loginImage' width='300px' height='300px' />
-        </LeftWrapper>
-
-        <RightWrapper>
-          <form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
-            <FormControl fullWidth sx={{ mb: 4 }}>
-              <Controller
-                name='email'
-                control={control}
-                rules={{ required: true }}
-                render={({ field: { value, onChange, onBlur } }) => (
-                  <TextField
-                    autoFocus
-                    label='Email'
-                    value={value}
-                    onBlur={onBlur}
-                    onChange={onChange}
-                    error={Boolean(errors.email)}
-                    placeholder='email'
-                  />
-                )}
-              />
-              {/* @ts-ignore */}
-              {errors.email && <FormHelperText sx={{ color: 'error.main' }}>{errors.email.message}</FormHelperText>}
-            </FormControl>
-            <FormControl fullWidth>
-              <InputLabel htmlFor='auth-login-v2-password' error={Boolean(errors.password)}>
-                Password
-              </InputLabel>
-              <Controller
-                name='password'
-                control={control}
-                rules={{ required: true }}
-                render={({ field: { value, onChange, onBlur } }) => (
-                  <OutlinedInput
-                    value={value}
-                    onBlur={onBlur}
-                    label='Password'
-                    onChange={onChange}
-                    id='auth-login-v2-password'
-                    error={Boolean(errors.password)}
-                    type={showPassword ? 'text' : 'password'}
-                    endAdornment={
-                      <InputAdornment position='end'>
-                        <IconButton
-                          edge='end'
-                          onMouseDown={e => e.preventDefault()}
-                          onClick={() => setShowPassword(!showPassword)}
-                        >
-                          {showPassword ? <EyeOutline /> : <EyeOffOutline />}
-                        </IconButton>
-                      </InputAdornment>
-                    }
-                  />
-                )}
-              />
-              {errors.password && (
-                <FormHelperText sx={{ color: 'error.main' }} id=''>
-                  {errors.password.message}
-                </FormHelperText>
-              )}
-            </FormControl>
-            <Box
-              sx={{ mb: 2, display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-between' }}
-            >
-              <FormControlLabel
-                label='Remember Me'
-                control={<Checkbox />}
-                sx={{ '& .MuiFormControlLabel-label': { color: 'text.primary' } }}
-              />
-              <Link passHref href='/forgot-password'>
-                <Typography component={MuiLink} variant='body2' sx={{ color: 'primary.main' }}>
-                  Forgot Password?
-                </Typography>
-              </Link>
+    <Grid container display='flex' justifyContent='center' alignItems='center' height='100%'>
+      <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
+        <Grid container justifyContent='center'>
+          <Grid item xs={12} sm={12} md={12} lg={8} xl={8}>
+            <Box display='flex' justifyContent='center'>
+              <RoundedCard>
+                <img
+                  src='/images/icons/project-icons/lock.png'
+                  height='100%'
+                  width='100%'
+                  style={{ objectFit: 'contain' }}
+                />
+              </RoundedCard>
             </Box>
-
-            <LoadingButton
-              fullWidth
-              sx={{ my: 1 }}
-              loading={auth.status === 'pending'}
-              disabled={auth.status === 'pending'}
-              loadingPosition='end'
-              size='large'
-              variant='outlined'
-              type='submit'
-            >
-              {auth.status === 'pending' ? 'Logging In' : 'Login'}
-            </LoadingButton>
-
-            <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
-              <Typography sx={{ mr: 2, color: 'text.secondary' }}>Don't have an account?</Typography>
-              <Typography>
-                <Link passHref href='/signup'>
-                  <Typography component={MuiLink} sx={{ color: 'primary.main' }}>
-                    Sign Up
-                  </Typography>
-                </Link>
-              </Typography>
-            </Box>
-          </form>
-        </RightWrapper>
-      </FlexBox>
-      {/* <Grid container alignItems={'center'} height="75vh" sx={{ justifyContent: "center", alignItems: "center", padding: "20px", borderRadius: "20px" }}>
-        <Grid item md={6} xs={12} textAlign='center'>
-          <Image src={'/images/cards/LoginImage.png'} alt='loginImage' width='300px' height='300px' />
+            <Card>
+              <Grid container display='flex' justifyContent='center'>
+                <Grid item xs={10} sm={10} md={10} lg={10} xl={10}>
+                  <form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
+                    <Box display='flex' alignItems='center' flexDirection='column' padding={5}>
+                      <Typography variant='h4' fontWeight={900} mt={14}>
+                        Sign In
+                      </Typography>
+                      <FormControl fullWidth sx={{ mb: 12, mt: 12 }}>
+                        <Controller
+                          name='email'
+                          control={control}
+                          rules={{ required: true }}
+                          render={({ field: { value, onChange, onBlur } }) => (
+                            <TextField
+                              autoFocus
+                              value={value}
+                              onBlur={onBlur}
+                              onChange={onChange}
+                              error={errors?.email ? !!errors.email : false}
+                              placeholder='Email'
+                              label='Email'
+                              helperText={errors?.email?.message}
+                            />
+                          )}
+                        />
+                      </FormControl>
+                      <FormControl fullWidth sx={{ mb: 2 }}>
+                        <Controller
+                          name='password'
+                          control={control}
+                          rules={{ required: true }}
+                          render={({ field: { value, onChange, onBlur } }) => (
+                            <TextField
+                              autoFocus
+                              value={value}
+                              onBlur={onBlur}
+                              onChange={onChange}
+                              error={errors?.password ? !!errors.password : false}
+                              placeholder='Password'
+                              label='Password'
+                              helperText={errors?.password?.message}
+                            />
+                          )}
+                        />
+                      </FormControl>
+                      <Box display='flex' justifyContent='flex-start' width='100%' mb={4}>
+                        <FormControlLabel
+                          label='Remember Me'
+                          control={<Checkbox />}
+                          sx={{ '& .MuiFormControlLabel-label': { color: 'text.primary' } }}
+                        />
+                      </Box>
+                      <LoadingButton
+                        fullWidth
+                        sx={{ mt: 3, my: 1, padding: 4 }}
+                        loading={auth.status === 'pending'}
+                        disabled={auth.status === 'pending'}
+                        loadingPosition='end'
+                        size='large'
+                        // @ts-ignore
+                        variant='gradient'
+                        type='submit'
+                      >
+                        <Typography variant='body1' fontWeight={900}>
+                          {auth.status === 'pending' ? 'Logging In' : 'Login'}
+                        </Typography>
+                      </LoadingButton>
+                      <Box
+                        sx={{
+                          mb: 2,
+                          mt: 4,
+                          display: 'flex',
+                          alignItems: 'center',
+                          flexWrap: 'wrap',
+                          justifyContent: 'space-between',
+                          width: '100%'
+                        }}
+                      >
+                        <Box display='flex'>
+                          <Typography sx={{ mr: 2, color: 'text.secondary' }}>Don't have an account?</Typography>
+                          <Typography>
+                            <Link passHref href='/signup'>
+                              <Typography component={MuiLink} sx={{ color: 'primary.main' }}>
+                                Sign Up
+                              </Typography>
+                            </Link>
+                          </Typography>
+                        </Box>
+                        <Link passHref href='/forgot-password'>
+                          <Typography component={MuiLink} variant='body2' sx={{ color: 'primary.main' }}>
+                            Forgot Password?
+                          </Typography>
+                        </Link>
+                      </Box>
+                    </Box>
+                  </form>
+                </Grid>
+              </Grid>
+            </Card>
+          </Grid>
         </Grid>
-        <Grid item md={6} xs={12}>
-          <Box sx={{ mb: 10 }}></Box>
-          <form noValidate autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
-            <FormControl fullWidth sx={{ mb: 4 }}>
-              <Controller
-                name='email'
-                control={control}
-                rules={{ required: true }}
-                render={({ field: { value, onChange, onBlur } }) => (
-                  <TextField
-                    autoFocus
-                    label='Email'
-                    value={value}
-                    onBlur={onBlur}
-                    onChange={onChange}
-                    error={Boolean(errors.email)}
-                    placeholder='email'
-                  />
-                )}
-              />
-              {errors.email && <FormHelperText sx={{ color: 'error.main' }}>{errors.email.message}</FormHelperText>}
-            </FormControl>
-            <FormControl fullWidth>
-              <InputLabel htmlFor='auth-login-v2-password' error={Boolean(errors.password)}>
-                Password
-              </InputLabel>
-              <Controller
-                name='password'
-                control={control}
-                rules={{ required: true }}
-                render={({ field: { value, onChange, onBlur } }) => (
-                  <OutlinedInput
-                    value={value}
-                    onBlur={onBlur}
-                    label='Password'
-                    onChange={onChange}
-                    id='auth-login-v2-password'
-                    error={Boolean(errors.password)}
-                    type={showPassword ? 'text' : 'password'}
-                    endAdornment={
-                      <InputAdornment position='end'>
-                        <IconButton
-                          edge='end'
-                          onMouseDown={e => e.preventDefault()}
-                          onClick={() => setShowPassword(!showPassword)}
-                        >
-                          {showPassword ? <EyeOutline /> : <EyeOffOutline />}
-                        </IconButton>
-                      </InputAdornment>
-                    }
-                  />
-                )}
-              />
-              {errors.password && (
-                <FormHelperText sx={{ color: 'error.main' }} id=''>
-                  {errors.password.message}
-                </FormHelperText>
-              )}
-            </FormControl>
-            <Box
-              sx={{ mb: 2, display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'space-between' }}
-            >
-              <FormControlLabel
-                label='Remember Me'
-                control={<Checkbox />}
-                sx={{ '& .MuiFormControlLabel-label': { color: 'text.primary' } }}
-              />
-              <Link passHref href='/forgot-password'>
-                <Typography component={MuiLink} variant='body2' sx={{ color: 'primary.main' }}>
-                  Forgot Password?
-                </Typography>
-              </Link>
-            </Box>
-
-            <LoadingButton
-              fullWidth
-              sx={{ my: 1 }}
-              loading={auth.status === 'pending'}
-              disabled={auth.status === 'pending'}
-              loadingPosition='end'
-              size='large'
-              variant='contained'
-              type='submit'
-            >
-              {auth.status === "pending" ? "Logging In" : "Login"}
-            </LoadingButton>
-
-            <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
-              <Typography sx={{ mr: 2, color: 'text.secondary' }}>Don't have an account?</Typography>
-              <Typography>
-                <Link passHref href='/signup'>
-                  <Typography component={MuiLink} sx={{ color: 'primary.main' }}>
-                    Sign Up
-                  </Typography>
-                </Link>
-              </Typography>
-            </Box>
-          </form>
-        </Grid>
-      </Grid>  */}
-    </>
+      </Grid>
+    </Grid>
   )
 }
 
